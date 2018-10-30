@@ -1,1 +1,1 @@
-Follow https://20dzhong.github.io/ for setup instructions
+Follow https://20dzhong.github.io/gradleSetup/ for setup instructions
