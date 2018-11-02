@@ -7,13 +7,14 @@
 
 package frc.team852;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team852.commands.ExampleCommand;
-import frc.team852.subsystems.ExampleSubsystem;
+import frc.team852.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,33 +23,45 @@ import frc.team852.subsystems.ExampleSubsystem;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
+
 // If you rename or move this class, update the build.properties file in the project root
 
 public class Robot extends TimedRobot {
 
-    public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+    // operator interface for systems
     public static OI oi;
 
+    // subsystems
+    public static ExampleSubsystem example;
+    public static DrivetrainTank drivetrain;
+
+    // commands
     private Command autonomousCommand;
     private SendableChooser<Command> chooser = new SendableChooser<>();
 
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
+    // var
+    public String gameMsg;
+    public static DriverStation driverStation = DriverStation.getInstance();
+
+    // initialization
     @Override
     public void robotInit() {
-        oi = new OI();
-        chooser.addDefault("Default Auto", new ExampleCommand());
+
+        // initialization, this is how you initialize a subsystem
+        drivetrain = new DrivetrainTank();
+        example = new ExampleSubsystem();
+
+        oi = new OI(); // must be defined last
+        new RobotMap(); // empty declaration to create it
+
+
+        // chooser.addDefault("Default Auto", new ExampleCommand());
         // chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+        // SmartDashboard.putData("Auto mode", chooser);
     }
 
-    /**
-     * This function is called once each time the robot enters Disabled mode.
-     * You can use it to reset any subsystem information you want to clear when
-     * the robot is disabled.
-     */
+
+    // called when disabled, clear system
     @Override
     public void disabledInit() {
 
@@ -70,9 +83,13 @@ public class Robot extends TimedRobot {
      * chooser code above (like the commented example) or additional comparisons
      * to the switch structure below with additional strings & commands.
      */
+
     @Override
     public void autonomousInit() {
         autonomousCommand = chooser.getSelected();
+
+        // gaming messages during auto:
+        // this.gameMsg = Robot.driverStation.getGameSpecificMessage();
 
         /*
          * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -87,36 +104,30 @@ public class Robot extends TimedRobot {
         }
     }
 
-    /**
-     * This function is called periodically during autonomous.
-     */
+    // called during auto
     @Override
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
     }
 
+
     @Override
     public void teleopInit() {
-        // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
+        // Stop autonomous when teleop start
+        // remove if you want auto to continue till stopped by a command
         if (autonomousCommand != null) {
             autonomousCommand.cancel();
         }
     }
 
-    /**
-     * This function is called periodically during operator control.
-     */
+
+    // called periodically during operator control
     @Override
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
     }
 
-    /**
-     * This function is called periodically during test mode.
-     */
+    // called periodically during testing
     @Override
     public void testPeriodic() {
 
