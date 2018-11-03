@@ -11,7 +11,7 @@ import frc.team852.RobotMap;
 import frc.team852.commands.DriveWithSticksTank;
 
 
-// controlls motor
+// control motor
 
 public class DrivetrainTank extends Subsystem {
 
@@ -20,6 +20,34 @@ public class DrivetrainTank extends Subsystem {
     @Override
     protected void initDefaultCommand() {
         // init command initiates on call
-
+        setDefaultCommand(new DriveWithSticksTank());
     }
+
+
+    public void changeCommandMode() {
+        // switch case driving method
+        // TODO implement difference method of driving
+        // implement changeCommandMode command
+    }
+
+
+    public void takeJoystickInputTank(Joystick left, Joystick right) {
+        // controlled drive
+        this.robotDrive.tankDrive(-left.getY(), -right.getY(), true);
+    }
+
+    public void drive(double left, double right) {
+        // predetermined path
+        this.robotDrive.tankDrive(-left, -right);
+    }
+
+
+    // stop
+    public void stop() {
+        this.robotDrive.stopMotor();  // something neat
+    }
+
+
+
 }
+

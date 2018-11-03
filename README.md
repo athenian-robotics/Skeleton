@@ -9,9 +9,10 @@ Follow https://20dzhong.github.io/gradleSetup/ for setup instructions
 
 > **Triggers**: declare button input
 
-> **Subsystems**: Declare a system of commands and system
+> **Subsystems**: declares **what to do**, make a system of commands and system, subsystem declares the methods while commands
+declares the execution orders and function
 
-> **Comamnds**: requires subsystem and execute a specific command
+> **Comamnds**: decalres **how to do an action**, requires subsystem and execute a specific command
 
-
-
+Subsystem class is declared and initialized in Robot <p>
+The subsystem object is passed into a command
