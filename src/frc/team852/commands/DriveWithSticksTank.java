@@ -17,6 +17,7 @@ public class DriveWithSticksTank extends Command {
 
     @Override
     protected void execute() {
+        Robot.drivetrain.takeJoystickInputTank(OI.stick1, OI.stick2);
 
     }
 
