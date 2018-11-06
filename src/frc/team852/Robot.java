@@ -12,12 +12,10 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team852.commands.ExampleCommand;
 import frc.team852.subsystems.*;
 
 // TODO add PID Control
-// TODO add ChezyDrive
+// TODO add Triggers for Drivetrain?
 // TODO add xBOX Buttons
 
 /**
@@ -36,8 +34,8 @@ public class Robot extends TimedRobot {
     public static OI oi;
 
     // subsystems
-    public static ExampleSubsystem example;
-    public static DrivetrainTank drivetrain;
+    public static SampleSubsystem example;
+    public static DrivetrainSubsystem drivetrain;
 
     // commands
     private Command autonomousCommand;
@@ -52,14 +50,14 @@ public class Robot extends TimedRobot {
     public void robotInit() {
 
         // initialization, this is how you initialize a subsystem
-        drivetrain = new DrivetrainTank();
-        example = new ExampleSubsystem();
+        drivetrain = new DrivetrainSubsystem();
+        example = new SampleSubsystem();
 
         oi = new OI(); // must be defined last
         new RobotMap(); // empty declaration to create it
 
 
-        // chooser.addDefault("Default Auto", new ExampleCommand());
+        // chooser.addDefault("Default Auto", new SampleCommand());
         // chooser.addObject("My Auto", new MyAutoCommand());
         // SmartDashboard.putData("Auto mode", chooser);
     }
@@ -99,7 +97,7 @@ public class Robot extends TimedRobot {
          * String autoSelected = SmartDashboard.getString("Auto Selector",
          * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
          * = new MyAutoCommand(); break; case "Default Auto": default:
-         * autonomousCommand = new ExampleCommand(); break; }
+         * autonomousCommand = new SampleCommand(); break; }
          */
 
         // schedule the autonomous command (example)

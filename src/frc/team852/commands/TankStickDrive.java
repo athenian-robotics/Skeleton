@@ -3,11 +3,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.team852.OI;
 import frc.team852.Robot;
 
-public class ChzDriveSticks extends Command {
+public class TankStickDrive extends Command {
 
 
-    public ChzDriveSticks() {
-        // why always call on the superclass structure?
+    public TankStickDrive() {
         super();
         requires(Robot.drivetrain);
     }
@@ -16,22 +15,10 @@ public class ChzDriveSticks extends Command {
     protected void initialize() {
     }
 
-    private double boundThrottle(double throttle) {
-        return throttle < 0 ? Math.max(throttle, -1) : Math.min(throttle, 1);
-    }
-
     @Override
     protected void execute() {
-        boolean quickTurn = OI.stick2.getTrigger();
-		double forward = OI.stick1.getY();
-		double turn = OI.stick2.getX();
+        Robot.drivetrain.drive(OI.stick1.getY(), OI.stick2.getY());
 
-		// Might need to flip signs
-		if (!quickTurn) {
-			Robot.drivetrain.drive(boundThrottle(forward + turn * forward), boundThrottle(forward - turn * forward));
-		} else {
-			Robot.drivetrain.drive(boundThrottle(forward + turn), boundThrottle(forward - turn));
-		}
     }
 
     @Override

@@ -1,20 +1,17 @@
 package frc.team852.subsystems;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-import frc.team852.Robot;
 import frc.team852.RobotMap;
-import frc.team852.commands.ChzDriveSticks;
-import frc.team852.commands.DriveWithSticksTank;
+import frc.team852.commands.ChzStickDrive;
+import frc.team852.commands.TankStickDrive;
 
 
 // control motor
 
-public class DrivetrainTank extends Subsystem {
+public class DrivetrainSubsystem extends Subsystem {
 
     private DifferentialDrive robotDrive = RobotMap.robotDrive;
 
@@ -23,7 +20,7 @@ public class DrivetrainTank extends Subsystem {
     @Override
     protected void initDefaultCommand() {
         // init command initiates on call
-        setDefaultCommand(new DriveWithSticksTank());
+        setDefaultCommand(new TankStickDrive());
     }
 
     private void changeActiveDriveMode(int mode) {
@@ -41,24 +38,18 @@ public class DrivetrainTank extends Subsystem {
         this.changeActiveDriveMode(mode);
         switch (activeDriveMode) {
             case 0:
-                this.setDefaultCommand(new DriveWithSticksTank());
+                this.setDefaultCommand(new TankStickDrive());
                 System.out.println("Tank drive");
                 break;
             case 1:
-                this.setDefaultCommand(new ChzDriveSticks());
+                this.setDefaultCommand(new ChzStickDrive());
                 System.out.println("Chz");
                 break;
         }
     }
 
-
-    public void takeJoystickInputTank(Joystick left, Joystick right) {
-        // controlled drive
-        this.robotDrive.tankDrive(-left.getY(), -right.getY(), true);
-    }
-
     public void drive(double left, double right) {
-        // predetermined path
+        // drive based on input
         this.robotDrive.tankDrive(-left, -right);
     }
 

@@ -3,10 +3,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.team852.OI;
 import frc.team852.Robot;
 
-public class DriveWithSticksTank extends Command {
+public class ChzStickDrive extends Command {
 
 
-    public DriveWithSticksTank() {
+    public ChzStickDrive() {
+        // why always call on the superclass structure?
         super();
         requires(Robot.drivetrain);
     }
@@ -15,10 +16,22 @@ public class DriveWithSticksTank extends Command {
     protected void initialize() {
     }
 
+    private double boundThrottle(double throttle) {
+        return throttle < 0 ? Math.max(throttle, -1) : Math.min(throttle, 1);
+    }
+
     @Override
     protected void execute() {
-        Robot.drivetrain.takeJoystickInputTank(OI.stick1, OI.stick2);
+        boolean quickTurn = OI.stick2.getTrigger();
+		double forward = OI.stick1.getY();
+		double turn = OI.stick2.getX();
 
+		// Might need to flip signs
+		if (!quickTurn) {
+			Robot.drivetrain.drive(boundThrottle(forward + turn * forward), boundThrottle(forward - turn * forward));
+		} else {
+			Robot.drivetrain.drive(boundThrottle(forward + turn), boundThrottle(forward - turn));
+		}
     }
 
     @Override

@@ -32,15 +32,15 @@ public class OI {
 
     // Start the command when the button is pressed and let it run the command
     // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
+    // button.whenPressed(new SampleCommand());
 
     // Run the command while the button is being held down and interrupt it once
     // the button is released.
-    // button.whileHeld(new ExampleCommand());
+    // button.whileHeld(new SampleCommand());
 
     // Start the command when the button is released and let it run the command
     // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
+    // button.whenReleased(new SampleCommand());
 
     //public static Joystick leftStick = new Joystick(0);
     //public static Joystick rightStick = new Joystick(1);

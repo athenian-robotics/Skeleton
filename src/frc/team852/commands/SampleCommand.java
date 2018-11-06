@@ -13,8 +13,8 @@ import frc.team852.Robot;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class ExampleCommand extends Command {
-    public ExampleCommand() {
+public class SampleCommand extends Command {
+    public SampleCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(Robot.example);
     }
