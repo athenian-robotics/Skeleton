@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.PWMTalonSRX;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -19,13 +21,22 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 public class RobotMap {
 
     // maping motor
-    public static SpeedController frontLeft = new PWMTalonSRX(0);
-    public static SpeedController backLeft = new PWMTalonSRX(1);
-    public static SpeedController frontRight = new PWMTalonSRX(3);
-    public static SpeedController backRight = new PWMTalonSRX(2);
+    public static SpeedController frontLeft = new WPI_TalonSRX(0);
+    public static SpeedController backLeft = new WPI_TalonSRX(1);
+    public static SpeedController frontRight = new WPI_TalonSRX(3);
+    public static SpeedController backRight = new WPI_TalonSRX(2);
 
     public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontLeft, backLeft);
     public static SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontRight, backRight);
 
     public static DifferentialDrive robotDrive = new DifferentialDrive(leftDrive, rightDrive);
 }
+
+
+
+/*
+* one note: unless something changed, I think there's a certain library that you need to use for TalonSRX that comes from the phoenix libraries
+* in RobotMap
+*
+* beyond that, though, it looks pretty good
+*/

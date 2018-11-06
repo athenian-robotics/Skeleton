@@ -16,3 +16,20 @@ declares the execution orders and function
 
 Subsystem class is declared and initialized in Robot <p>
 The subsystem object is passed into a command
+
+
+Rotor is the example system
+
+# Requirement
+
+> FRC Plugin 
+
+> https://github.com/CrossTheRoadElec/Phoenix-Documentation
+
+# TODO 
+
+> Add PID 
+
+> Encode Skeleton
+
+> Cheesy Drive
