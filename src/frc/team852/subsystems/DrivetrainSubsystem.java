@@ -1,12 +1,11 @@
 package frc.team852.subsystems;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import frc.team852.RobotMap;
-import frc.team852.commands.ChzStickDrive;
-import frc.team852.commands.TankStickDrive;
+import frc.team852.commands.DriveChzStick;
+import frc.team852.commands.DriveTankStick;
 
 
 // control motor
@@ -20,7 +19,7 @@ public class DrivetrainSubsystem extends Subsystem {
     @Override
     protected void initDefaultCommand() {
         // init command initiates on call
-        setDefaultCommand(new TankStickDrive());
+        setDefaultCommand(new DriveTankStick());
     }
 
     private void changeActiveDriveMode(int mode) {
@@ -38,11 +37,11 @@ public class DrivetrainSubsystem extends Subsystem {
         this.changeActiveDriveMode(mode);
         switch (activeDriveMode) {
             case 0:
-                this.setDefaultCommand(new TankStickDrive());
+                this.setDefaultCommand(new DriveTankStick());
                 System.out.println("Tank drive");
                 break;
             case 1:
-                this.setDefaultCommand(new ChzStickDrive());
+                this.setDefaultCommand(new DriveChzStick());
                 System.out.println("Chz");
                 break;
         }
