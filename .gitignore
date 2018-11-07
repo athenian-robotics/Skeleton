@@ -28,6 +28,6 @@ build/
 gradlew*
 
 
-*.iml
 *.ipr
 *.iws
+

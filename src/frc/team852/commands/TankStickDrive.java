@@ -7,6 +7,7 @@ public class TankStickDrive extends Command {
 
 
     public TankStickDrive() {
+        // TODO why super(); ?
         super();
         requires(Robot.drivetrain);
     }
