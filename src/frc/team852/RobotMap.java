@@ -31,12 +31,3 @@ public class RobotMap {
 
     public static DifferentialDrive robotDrive = new DifferentialDrive(leftDrive, rightDrive);
 }
-
-
-
-/*
-* one note: unless something changed, I think there's a certain library that you need to use for TalonSRX that comes from the phoenix libraries
-* in RobotMap
-*
-* beyond that, though, it looks pretty good
-*/
