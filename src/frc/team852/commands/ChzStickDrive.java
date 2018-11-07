@@ -22,6 +22,7 @@ public class ChzStickDrive extends Command {
 
     @Override
     protected void execute() {
+        // TODO what trigger
         boolean quickTurn = OI.stick2.getTrigger();
 		double forward = OI.stick1.getY();
 		double turn = OI.stick2.getX();
@@ -33,6 +34,7 @@ public class ChzStickDrive extends Command {
 			Robot.drivetrain.drive(boundThrottle(forward + turn), boundThrottle(forward - turn));
 		}
     }
+
 
     @Override
     protected boolean isFinished() {

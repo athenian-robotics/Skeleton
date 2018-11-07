@@ -30,6 +30,6 @@ Rotor is the example system
 
 > Add PID 
 
-> Encode Skeleton
+> Encoder Skeleton
 
-> Cheesy Drive
+> Change Drive Mode Trigger

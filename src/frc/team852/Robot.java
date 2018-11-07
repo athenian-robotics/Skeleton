@@ -132,6 +132,5 @@ public class Robot extends TimedRobot {
     // called periodically during testing
     @Override
     public void testPeriodic() {
-
     }
 }
