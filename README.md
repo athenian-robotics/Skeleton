@@ -1,4 +1,17 @@
-Follow https://20dzhong.github.io/gradleSetup/ for setup instructions
+# Requirement
+
+> FRC Plugin
+> * Make sure you have the LATEST version of IntelliJ and WpiLib! Or else it will not work!
+>* To update WpiLib to the latest version ``tool -> FRC -> Download Latest WpiLib``
+> * To update IntelliJ ``Help -> Check for Update``
+
+> TalonSRX Motor Controller Library: https://github.com/CrossTheRoadElec/Phoenix-Documentation
+
+
+# Set Up
+
+Follow https://20dzhong.github.io/gradleSetup/ for setup instructions, or just ask a Programming Lead.
+
 
 # Hierarchy and Usage
 > **RobotMap**: this is where you map your motors or anything else that connects to the roborio.
@@ -20,12 +33,6 @@ The subsystem object is passed into a command
 
 Rotor is the example system
 
-# Requirement
-
-> FRC Plugin 
-
-> https://github.com/CrossTheRoadElec/Phoenix-Documentation
-
 # TODO 
 
 > Add PID 
@@ -33,3 +40,5 @@ Rotor is the example system
 > Encoder Skeleton
 
 > Change Drive Mode Trigger
+
+> Pack CTRE Motor Library

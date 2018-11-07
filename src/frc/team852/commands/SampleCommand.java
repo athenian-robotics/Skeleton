@@ -28,7 +28,6 @@ public class SampleCommand extends Command {
 
     }
 
-
     /**
      * The execute method is called repeatedly when this Command is
      * scheduled to run until this Command either finishes or is canceled.
