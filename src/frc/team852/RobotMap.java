@@ -20,7 +20,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  */
 public class RobotMap {
 
-    // maping motor
+    // mapping motor
     public static SpeedController frontLeft = new WPI_TalonSRX(0);
     public static SpeedController backLeft = new WPI_TalonSRX(1);
     public static SpeedController frontRight = new WPI_TalonSRX(3);
