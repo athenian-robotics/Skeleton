@@ -1,3 +1,8 @@
+This should be a good starter code for this year and hopefully the year to come, it's not too broad, and it's specific enough to basically serve
+as a starter code for the actual robot.
+
+It has a ~~hopefully~~ working tank drive and cheesy drive, PID controls, and some other basic structures.
+
 # Requirement
 
 > FRC Plugin
