@@ -154,6 +154,7 @@ public class PIDControl {
         double dt = (System.currentTimeMillis() - this.lastReadingMilli) / 1000d;
 
         // rough F output, only depend on target location
+        // todo probably doesnt work :(
         double fOut = this.fGain * target;
 
         // proportion
