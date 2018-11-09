@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team852.commandGroups.SampleAuto;
+import frc.team852.commands.*;
 
 
 /**
@@ -56,6 +57,9 @@ public class OI {
     public static Joystick stick2 = new Joystick(1);
 
     public OI() {
-        new JoystickButton(stick1, 1).whileHeld(new SampleAuto(0.7));
+        new JoystickButton(stick1, 1).whenActive(new SampleAuto());
+
+        new JoystickButton(stick2, 7).whenActive(new ChangeToChz());
+        new JoystickButton(stick2, 8).whenActive(new ChangeToTank());
     }
 }
