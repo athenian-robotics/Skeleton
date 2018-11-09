@@ -54,6 +54,7 @@ public class OI {
     //public static Button xboxA = new JoystickButton(xbox, 1);
     public static Joystick stick1 = new Joystick(0);
     public static Joystick stick2 = new Joystick(1);
+
     public OI() {
         new JoystickButton(stick1, 1).whileHeld(new SampleAuto(0.7));
     }
