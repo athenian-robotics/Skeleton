@@ -11,8 +11,10 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SampleRobot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import frc.team852.commandGroups.SampleAuto;
 import frc.team852.subsystems.*;
 
 // TODO add PID Control
@@ -56,6 +58,8 @@ public class Robot extends TimedRobot {
 
         oi = new OI(); // must be defined last
         new RobotMap(); // empty declaration to create it
+        CommandGroup dummyAuto = new SampleAuto();
+        dummyAuto.start();
 
 
         // chooser.addDefault("Default Auto", new SampleCommand());
