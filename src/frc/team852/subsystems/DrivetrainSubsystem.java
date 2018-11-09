@@ -57,8 +57,5 @@ public class DrivetrainSubsystem extends Subsystem {
     public void stop() {
         this.robotDrive.stopMotor();  // something neat
     }
-
-
-
 }
 

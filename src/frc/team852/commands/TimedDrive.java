@@ -14,7 +14,7 @@ public class TimedDrive extends Command {
     private double left;
     private double right;
     private double time;
-    private double power = 1;
+    final private double power = 1;
 
     public TimedDrive(double left, double right, double time) {
         requires(Robot.drivetrain);

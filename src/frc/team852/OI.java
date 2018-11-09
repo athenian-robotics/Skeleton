@@ -53,6 +53,7 @@ public class OI {
     //public static Joystick xbox = new Joystick(2);
 
     //public static Button xboxA = new JoystickButton(xbox, 1);
+
     public static Joystick stick1 = new Joystick(0);
     public static Joystick stick2 = new Joystick(1);
 
