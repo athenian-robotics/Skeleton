@@ -58,8 +58,7 @@ public class Robot extends TimedRobot {
 
         oi = new OI(); // must be defined last
         new RobotMap(); // empty declaration to create it
-        CommandGroup dummyAuto = new SampleAuto();
-        dummyAuto.start();
+
 
 
         // chooser.addDefault("Default Auto", new SampleCommand());
@@ -94,6 +93,7 @@ public class Robot extends TimedRobot {
     @Override
     public void autonomousInit() {
         autonomousCommand = chooser.getSelected();
+
 
         // gaming messages during auto:
         // this.gameMsg = Robot.driverStation.getGameSpecificMessage();

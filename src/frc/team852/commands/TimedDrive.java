@@ -9,7 +9,7 @@ public class TimedDrive extends Command {
     private double left;
     private double right;
     private double seconds;
-
+    private long time;
     public TimedDrive(double left, double right, double seconds) {
         // TODO why super(); ?
         super();
@@ -17,6 +17,7 @@ public class TimedDrive extends Command {
         this.left = left;
         this.right = right;
         this.seconds = seconds;
+        this.time = System.currentTimeMillis();
     }
 
     @Override
@@ -30,12 +31,13 @@ public class TimedDrive extends Command {
         Robot.drivetrain.drive(left, right);
         this.setTimeout(seconds);
         Robot.drivetrain.stop();
+        end();
     }
 
     @Override
     protected boolean isFinished() {
         // Stop when execute completes
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

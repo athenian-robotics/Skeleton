@@ -7,8 +7,10 @@
 
 package frc.team852;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -20,13 +22,14 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class RobotMap {
 
     // mapping motor
-    public static SpeedController frontLeft = new WPI_TalonSRX(0);
-    public static SpeedController backLeft = new WPI_TalonSRX(1);
-    public static SpeedController frontRight = new WPI_TalonSRX(3);
-    public static SpeedController backRight = new WPI_TalonSRX(2);
+    public static SpeedController frontLeft = new WPI_VictorSPX(0);
+    public static SpeedController backLeft = new WPI_VictorSPX(1);
+    public static SpeedController frontRight = new WPI_VictorSPX(3);
+    public static SpeedController backRight = new WPI_VictorSPX(2);
 
     public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontLeft, backLeft);
     public static SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontRight, backRight);
 
     public static DifferentialDrive robotDrive = new DifferentialDrive(leftDrive, rightDrive);
+
 }

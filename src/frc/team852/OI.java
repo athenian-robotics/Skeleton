@@ -8,6 +8,10 @@
 package frc.team852;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.team852.commandGroups.SampleAuto;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -50,5 +54,7 @@ public class OI {
     //public static Button xboxA = new JoystickButton(xbox, 1);
     public static Joystick stick1 = new Joystick(0);
     public static Joystick stick2 = new Joystick(1);
-
+    public OI() {
+        new JoystickButton(stick1, 1).whileHeld(new SampleAuto(0.7));
+    }
 }

@@ -49,7 +49,7 @@ public class DrivetrainSubsystem extends Subsystem {
 
     public void drive(double left, double right) {
         // drive based on input
-        this.robotDrive.tankDrive(-left, -right);
+        this.robotDrive.tankDrive((left), (right));
     }
 
 
