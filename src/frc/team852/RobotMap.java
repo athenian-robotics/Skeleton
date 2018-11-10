@@ -7,6 +7,7 @@
 
 package frc.team852;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -19,16 +20,17 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring.
  */
+
 public class RobotMap {
 
     // mapping motor
-    public static SpeedController frontLeft = new WPI_VictorSPX(0);
-    public static SpeedController backLeft = new WPI_VictorSPX(1);
-    public static SpeedController frontRight = new WPI_VictorSPX(3);
-    public static SpeedController backRight = new WPI_VictorSPX(2);
+    public static WPI_VictorSPX frontRight = new WPI_VictorSPX(0);
+    public static WPI_VictorSPX backRight = new WPI_VictorSPX(1);
+    public static WPI_VictorSPX frontLeft = new WPI_VictorSPX(3);
+    public static WPI_VictorSPX backLeft = new WPI_VictorSPX(2);
 
-    public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontLeft, backLeft);
-    public static SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontRight, backRight);
+    public static SpeedControllerGroup rightDrive = new SpeedControllerGroup(frontLeft, backLeft);
+    public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontRight, backRight);
 
     public static DifferentialDrive robotDrive = new DifferentialDrive(leftDrive, rightDrive);
 

@@ -1,5 +1,6 @@
 package frc.team852.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -15,6 +16,15 @@ public class DrivetrainSubsystem extends Subsystem {
     private DifferentialDrive robotDrive = RobotMap.robotDrive;
 
     private int activeDriveMode = 0;
+
+
+    public DrivetrainSubsystem() {
+        RobotMap.backLeft.setNeutralMode(NeutralMode.Brake);
+        RobotMap.backRight.setNeutralMode(NeutralMode.Brake);
+        RobotMap.frontLeft.setNeutralMode(NeutralMode.Brake);
+        RobotMap.frontRight.setNeutralMode(NeutralMode.Brake);
+
+    }
 
     @Override
     protected void initDefaultCommand() {
@@ -49,10 +59,15 @@ public class DrivetrainSubsystem extends Subsystem {
 
     public void drive(double left, double right) {
         // drive based on input
-        this.robotDrive.tankDrive((left), (right));
+        this.robotDrive.tankDrive(left, right);
     }
 
-
+    private double sketch_exp(double input, double pow){
+        double sign = input < 0 ? -1 : 1;
+        input = Math.abs(input);
+        double output = input <.7906 ? (input/1.8)+.2 : Math.pow(input, pow);
+        return output * sign;
+    }
     // stop
     public void stop() {
         this.robotDrive.stopMotor();  // something neat

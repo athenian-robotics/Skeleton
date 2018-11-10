@@ -1,6 +1,7 @@
 package frc.team852.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team852.Robot;
 
 /**
@@ -15,12 +16,16 @@ public class TimedDrive extends Command {
     private double right;
     private double time;
     final private double power = 1;
+    private static int count = 0;
 
     public TimedDrive(double left, double right, double time) {
         requires(Robot.drivetrain);
         this.left = left;
         this.right = right;
         this.time = time;
+        count++;
+        SmartDashboard.putNumber("NUMBER OF TIMEDDRIVES= ", count);
+
     }
 
     // turn left or right
@@ -43,12 +48,16 @@ public class TimedDrive extends Command {
             default:
                 System.out.println("Invalid turning position");
         }
+        count++;
+        SmartDashboard.putNumber("NUMBER OF TIMEDDRIVES= ", count);
     }
 
     // forward and backward
     public TimedDrive(String position, double time) {
         requires(Robot.drivetrain);
         this.time = time;
+        setTimeout(this.time);
+
 
         switch (position) {
             case "forward":
@@ -60,15 +69,12 @@ public class TimedDrive extends Command {
                 this.right = -this.power;
             default:
                 System.out.println("Invalid driving parameter");
-            }
+        }
     }
 
     @Override
     protected void execute() {
         Robot.drivetrain.drive(left, right);
-        this.setTimeout(time);
-        Robot.drivetrain.stop();
-        end();
     }
 
     @Override

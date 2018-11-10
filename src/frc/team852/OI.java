@@ -60,7 +60,7 @@ public class OI {
     public OI() {
         new JoystickButton(stick1, 1).whenActive(new SampleAuto());
 
-        new JoystickButton(stick2, 7).whenActive(new ChangeToChz());
-        new JoystickButton(stick2, 8).whenActive(new ChangeToTank());
+        new JoystickButton(stick2, 6).whenActive(new ChangeToChz());
+        new JoystickButton(stick2, 7).whenActive(new ChangeToTank());
     }
 }
