@@ -3,6 +3,7 @@ package frc.team852.subsystems;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.Encoder;
 
 import frc.team852.RobotMap;
 import frc.team852.commands.DriveChzStick;
@@ -14,16 +15,30 @@ import frc.team852.commands.DriveTankStick;
 public class DrivetrainSubsystem extends Subsystem {
 
     private DifferentialDrive robotDrive = RobotMap.robotDrive;
+    private Encoder leftEncoder;
+    private Encoder rightEncoder;
 
     private int activeDriveMode = 0;
 
 
     public DrivetrainSubsystem() {
-        RobotMap.backLeft.setNeutralMode(NeutralMode.Brake);
-        RobotMap.backRight.setNeutralMode(NeutralMode.Brake);
-        RobotMap.frontLeft.setNeutralMode(NeutralMode.Brake);
-        RobotMap.frontRight.setNeutralMode(NeutralMode.Brake);
+       setNeutralMode(NeutralMode.Brake);
+        leftEncoder = RobotMap.leftDriveEncoder;
+        rightEncoder = RobotMap.rightDriveEncoder;
+        this.leftEncoder.reset();
+        this.rightEncoder.reset();
+    }
 
+    public void resetEncoders(){
+        this.leftEncoder.reset();
+        this.rightEncoder.reset();
+    }
+
+    public void setNeutralMode(NeutralMode mode){
+        RobotMap.backLeft.setNeutralMode(mode);
+        RobotMap.backRight.setNeutralMode(mode);
+        RobotMap.frontLeft.setNeutralMode(mode);
+        RobotMap.frontRight.setNeutralMode(mode);
     }
 
     @Override
@@ -59,15 +74,18 @@ public class DrivetrainSubsystem extends Subsystem {
 
     public void drive(double left, double right) {
         // drive based on input
+        // TODO remove debug
+//        System.out.printf("ENCODERS\n\tRIGHT ENC: %d\n\tLEFT ENC: %d\n\n", rightEncoder.get(), leftEncoder.get());
         this.robotDrive.tankDrive(left, right);
     }
 
-    private double sketch_exp(double input, double pow){
+    private double sketch_exp(double input, double pow) {
         double sign = input < 0 ? -1 : 1;
         input = Math.abs(input);
-        double output = input <.7906 ? (input/1.8)+.2 : Math.pow(input, pow);
+        double output = input < .7906 ? (input / 1.8) + .2 : Math.pow(input, pow);
         return output * sign;
     }
+
     // stop
     public void stop() {
         this.robotDrive.stopMotor();  // something neat

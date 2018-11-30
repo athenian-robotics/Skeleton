@@ -10,11 +10,10 @@ package frc.team852;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import frc.team852.commandGroups.SampleAuto;
-import frc.team852.subsystems.*;
+import frc.team852.subsystems.DrivetrainSubsystem;
+import frc.team852.subsystems.SampleSubsystem;
 
 // TODO add PID Control
 // TODO add Triggers for Drivetrain?
@@ -69,7 +68,7 @@ public class Robot extends TimedRobot {
     // called when disabled, clear system
     @Override
     public void disabledInit() {
-
+        drivetrain.resetEncoders();
     }
 
     @Override

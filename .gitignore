@@ -20,15 +20,16 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+# Vim swap files
+*.swp
 
-.idea/
-gradle/
+# Build stuff
 .gradle/
 build/
-gradlew*
+out/
+gradle*
 
-
+# IDE files
+.idea/
 *.ipr
 *.iws
-
-src/frc/team852/triggers/

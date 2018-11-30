@@ -7,13 +7,11 @@
 
 package frc.team852;
 
-import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import edu.wpi.first.wpilibj.Encoder;
 
 
 /**
@@ -33,5 +31,9 @@ public class RobotMap {
     public static SpeedControllerGroup leftDrive = new SpeedControllerGroup(frontRight, backRight);
 
     public static DifferentialDrive robotDrive = new DifferentialDrive(leftDrive, rightDrive);
+
+    public static Encoder leftDriveEncoder = new Encoder(0,1);
+    public static Encoder rightDriveEncoder = new Encoder(2, 3);
+    public static DigitalInput testSwtich = new DigitalInput(4);
 
 }

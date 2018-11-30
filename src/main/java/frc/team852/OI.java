@@ -8,10 +8,11 @@
 package frc.team852;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team852.commandGroups.SampleAuto;
-import frc.team852.commands.*;
+import frc.team852.commands.ChangeToChz;
+import frc.team852.commands.ChangeToTank;
+import frc.team852.commands.EncoderCalib;
 
 
 /**
@@ -19,6 +20,7 @@ import frc.team852.commands.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+
     // CREATING BUTTONS
     // One type of button is a joystick button which is any button on a
     // joystick.
@@ -58,9 +60,6 @@ public class OI {
     public static Joystick stick2 = new Joystick(1);
 
     public OI() {
-        new JoystickButton(stick1, 1).whenActive(new SampleAuto());
-
-        new JoystickButton(stick2, 6).whenActive(new ChangeToChz());
-        new JoystickButton(stick2, 7).whenActive(new ChangeToTank());
+        new JoystickButton(stick1, 1).whenReleased(new EncoderCalib());
     }
 }
