@@ -5,17 +5,9 @@ It has a ~~hopefully~~ working tank drive and cheesy drive, PID controls, and so
 
 # Dependencies
 
-> FRC Plugin
-> * Make sure you have the LATEST version of IntelliJ and WpiLib! Or else it WILL NOT work!
-> * To update WpiLib to the latest version ``tool -> FRC -> Download Latest WpiLib``
-> * To update IntelliJ ``Help -> Check for Update``
-
-> TalonSRX Motor Controller Library: https://github.com/CrossTheRoadElec/Phoenix-Documentation
-
-
-# Set Up
-
-Follow https://20dzhong.github.io/gradleSetup/ for setup instructions, or just ask a Programming Lead.
+> **[GradleRIO](https://github.com/wpilibsuite/GradleRIO)**
+> * `chmod +x` and run `dep_install.sh` to download and install and setup GradleRIO on Linux/MacOS
+> * Run `dep_install`  (currently untested) to download and install and setup GradleRIO on Windows
 
 
 # Hierarchy and Usage
