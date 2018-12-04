@@ -31,4 +31,14 @@ public class Pose2DWithCurvature implements IPose2D, ICurvature {
         // TODO write JSON representation
         return "";
     }
+
+    @Override
+    public double getCurvature() {
+        return curvature;
+    }
+
+    @Override
+    public double getDCurvatureDs() {
+        return dcurvature_ds;
+    }
 }
