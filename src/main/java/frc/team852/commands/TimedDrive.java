@@ -22,55 +22,13 @@ public class TimedDrive extends Command {
         requires(Robot.drivetrain);
         this.left = left;
         this.right = right;
-        this.time = time;
+        setTimeout(time);
         count++;
         SmartDashboard.putNumber("NUMBER OF TIMEDDRIVES= ", count);
 
     }
 
     // turn left or right
-    public TimedDrive(String position) {
-        requires(Robot.drivetrain);
-        this.time = 1; // TODO seconds not tuned
-
-        switch (position) {
-            case "left":
-                this.left = -this.power;
-                this.right = this.power;
-                break;
-            case "right":
-                this.left = this.power;
-                this.right = -this.power;
-            case "turn":
-                this.left = this.power;
-                this.right = -this.power;
-                this.time *= 2;
-            default:
-                System.out.println("Invalid turning position");
-        }
-        count++;
-        SmartDashboard.putNumber("NUMBER OF TIMEDDRIVES= ", count);
-    }
-
-    // forward and backward
-    public TimedDrive(String position, double time) {
-        requires(Robot.drivetrain);
-        this.time = time;
-        setTimeout(this.time);
-
-
-        switch (position) {
-            case "forward":
-                this.left = this.power;
-                this.right = this.power;
-                break;
-            case "backward":
-                this.left = -this.power;
-                this.right = -this.power;
-            default:
-                System.out.println("Invalid driving parameter");
-        }
-    }
 
     @Override
     protected void execute() {
@@ -80,7 +38,7 @@ public class TimedDrive extends Command {
     @Override
     protected boolean isFinished() {
         // Stop when execute completes
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
