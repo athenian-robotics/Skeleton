@@ -1,24 +1,26 @@
 package frc.team852.lib.geometry;
 
+import frc.team852.lib.utilities.Pose2DWithCurvature;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class PathGenerator {
-    private CurvaturePose start;
-    private List<CurvaturePose> waypoints = new ArrayList<>();
-    private CurvaturePose end;
+    private Pose2DWithCurvature start;
+    private List<Pose2DWithCurvature> waypoints = new ArrayList<>();
+    private Pose2DWithCurvature end;
 
-    PathGenerator(CurvaturePose start, CurvaturePose end){
+    PathGenerator(Pose2DWithCurvature start, Pose2DWithCurvature end){
         this.start = start;
         this.end = end;
     }
 
-    PathGenerator(CurvaturePose start, List<CurvaturePose> waypoints, CurvaturePose end){
+    PathGenerator(Pose2DWithCurvature start, List<Pose2DWithCurvature> waypoints, Pose2DWithCurvature end){
         this.start = start;
         this.end = end;
     }
 
-    List<CurvaturePose> generateSpline(){
+    List<Pose2DWithCurvature> generateSpline(){
         return new ArrayList<>();
     }
 }

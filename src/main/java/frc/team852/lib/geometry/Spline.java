@@ -1,23 +1,25 @@
 package frc.team852.lib.geometry;
 
-public abstract class Spline {
-    private Pose start;
-    private Pose finish;
+import frc.team852.lib.utilities.Pose2D;
 
-    public Spline(Pose start, Pose finish) {
+public abstract class Spline {
+    private Pose2D start;
+    private Pose2D finish;
+
+    public Spline(Pose2D start, Pose2D finish) {
         this.start = start;
         this.finish = finish;
     }
 
-    public Pose getStart() {
+    public Pose2D getStart() {
         return start;
     }
 
-    public Pose getFinish() {
+    public Pose2D getFinish() {
         return finish;
     }
 
     abstract void generatePath();
 
-    abstract Pose samplePath(float t);
+    abstract Pose2D samplePath(float t);
 }
