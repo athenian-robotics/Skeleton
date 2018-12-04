@@ -16,6 +16,11 @@ public class Translation2D implements ITranslation2D {
         this.y = y;
     }
 
+    public Translation2D(Translation2D other) {
+        this.x = other.getX();
+        this.y = other.getY();
+    }
+
     public double getX() {
         return x;
     }
