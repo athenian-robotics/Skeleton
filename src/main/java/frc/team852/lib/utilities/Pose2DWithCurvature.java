@@ -1,6 +1,6 @@
 package frc.team852.lib.utilities;
 
-public class Pose2DWithCurvature implements IPose2D, ITranslation2D {
+public class Pose2DWithCurvature implements IPose2D, ICurvature {
     protected Pose2D pose;
     protected double curvature;
     protected double dcurvature_ds;
