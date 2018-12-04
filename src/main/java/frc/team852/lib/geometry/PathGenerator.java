@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PathGenerator {
-    private SpeedPose start;
-    private List<SpeedPose> waypoints = new ArrayList<>();
-    private SpeedPose end;
+    private CurvaturePose start;
+    private List<CurvaturePose> waypoints = new ArrayList<>();
+    private CurvaturePose end;
 
-    PathGenerator(SpeedPose start, SpeedPose end){
+    PathGenerator(CurvaturePose start, CurvaturePose end){
         this.start = start;
         this.end = end;
     }
 
-    PathGenerator(SpeedPose start, List<SpeedPose> waypoints, SpeedPose end){
+    PathGenerator(CurvaturePose start, List<CurvaturePose> waypoints, CurvaturePose end){
         this.start = start;
         this.end = end;
     }
 
-    List<SpeedPose> generateSpline(){
+    List<CurvaturePose> generateSpline(){
         return new ArrayList<>();
     }
 }
