@@ -1,7 +1,5 @@
 package frc.team852.lib.utilities;
 
-import frc.team852.lib.geometry.Pose;
-
 public class Pose2D implements IPose2D {
 
     protected final Translation2D translation;
@@ -41,5 +39,11 @@ public class Pose2D implements IPose2D {
     @Override
     public Translation2D getTranslation() {
         return this.translation;
+    }
+
+    @Override
+    public String toJSON() {
+        // TODO write a JSON representation
+        return null;
     }
 }
