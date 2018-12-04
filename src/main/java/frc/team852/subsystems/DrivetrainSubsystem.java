@@ -75,8 +75,8 @@ public class DrivetrainSubsystem extends Subsystem {
     public void drive(double left, double right) {
         // drive based on input
         // TODO remove debug
-//        System.out.printf("ENCODERS\n\tRIGHT ENC: %d\n\tLEFT ENC: %d\n\n", rightEncoder.get(), leftEncoder.get());
-        this.robotDrive.tankDrive(left, right);
+        // System.out.printf("ENCODERS\n\tRIGHT ENC: %d\n\tLEFT ENC: %d\n\n", rightEncoder.get(), leftEncoder.get());
+        this.robotDrive.tankDrive(left/2, right/2);
     }
 
     private double sketch_exp(double input, double pow) {
