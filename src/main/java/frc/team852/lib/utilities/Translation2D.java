@@ -33,4 +33,10 @@ public class Translation2D implements ITranslation2D {
     public Translation2D getTranslation() {
         return this;
     }
+
+    @Override
+    public String toJSON() {
+        // TODO write JSON representation
+        return "";
+    }
 }

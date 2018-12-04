@@ -44,6 +44,6 @@ public class Pose2D implements IPose2D {
     @Override
     public String toJSON() {
         // TODO write a JSON representation
-        return null;
+        return "";
     }
 }
