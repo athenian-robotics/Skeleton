@@ -16,4 +16,16 @@ public class Pose {
     public Rotation getRotation() {
         return rotation;
     }
+
+    public double getX() { return location.getX(); }
+
+    public double getY() { return location.getY(); }
+
+    public double getCos() {
+        return rotation.getCos();
+    }
+
+    public double getSin() {
+        return rotation.getSin();
+    }
 }
