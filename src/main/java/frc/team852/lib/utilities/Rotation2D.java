@@ -32,4 +32,8 @@ public class Rotation2D implements IRotation2D {
         return this;
     }
 
+    @Override
+    public String toJSON() {
+        return String.format("{\"cos\": %s, \"sin\": %s}", cos, sin);
+    }
 }
