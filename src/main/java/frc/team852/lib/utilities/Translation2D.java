@@ -21,6 +21,7 @@ public class Translation2D implements ITranslation2D {
         this.y = other.y;
     }
 
+
     public double getX() {
         return x;
     }
@@ -34,9 +35,26 @@ public class Translation2D implements ITranslation2D {
         return this;
     }
 
+    public Translation2D inverse() {
+        return new Translation2D(-x, -y);
+    }
+
+    public double norm() {
+        return Math.hypot(x, y);
+    }
+
+    private Translation2D translateBy(Translation2D translation) {
+        return new Translation2D(x + translation.x, y + translation.y);
+    }
+
+    public double distance(Translation2D translation) {
+        return inverse().translateBy(translation).norm();
+    }
+
     @Override
     public String toJSON() {
         // TODO write JSON representation
         return "";
     }
+
 }
