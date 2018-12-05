@@ -1,8 +1,9 @@
 package frc.team852.lib.utilities;
 
+import org.json.*;
+import java.io.*;
+
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public final class JSONEditor {
 
@@ -42,6 +43,19 @@ public final class JSONEditor {
 
     public String absolutePath() {
             return absPath;
+    }
+
+    public static void main(String[] args) throws IOException {
+        Pose2D ok = new Pose2D();
+        Pose2D okok = new Pose2D();
+        Pose2D okokok = new Pose2D();
+
+        Trajectory<Pose2D> okokokok = new Trajectory<>();
+        okokokok.add(ok);
+        okokokok.add(okok);
+        okokokok.add(okokok);
+
+        JSONEditor.dumpJSON(okokokok);
     }
 }
 

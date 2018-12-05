@@ -1,5 +1,7 @@
 package frc.team852.lib.utilities;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.function.Consumer;
 public class Trajectory<P extends IPose2D> implements Iterable<P>, JSONWritable {
     protected List<P> trajectory;
 
+    @NotNull
     public boolean add(P p) {
         return trajectory.add(p);
     }
