@@ -1,9 +1,9 @@
 package frc.team852.lib.utilities;
 
 public class Pose2DWithCurvature implements IPose2D, ICurvature {
-    protected Pose2D pose;
-    protected double curvature;
-    protected double dcurvature_ds;
+    protected final Pose2D pose;
+    protected final double curvature;
+    protected final double dcurvature_ds;
 
     public Pose2DWithCurvature(Pose2D pose, double curvature, double dcurvature_ds) {
         this.pose = pose;
@@ -12,8 +12,8 @@ public class Pose2DWithCurvature implements IPose2D, ICurvature {
     }
 
     @Override
-    public IPose2D getPose() {
-        return this;
+    public Pose2D getPose() {
+        return pose;
     }
 
     @Override
@@ -27,12 +27,6 @@ public class Pose2DWithCurvature implements IPose2D, ICurvature {
     }
 
     @Override
-    public String toJSON() {
-        // TODO write JSON representation
-        return "";
-    }
-
-    @Override
     public double getCurvature() {
         return curvature;
     }
@@ -40,5 +34,11 @@ public class Pose2DWithCurvature implements IPose2D, ICurvature {
     @Override
     public double getDCurvatureDs() {
         return dcurvature_ds;
+    }
+
+    @Override
+    public String toJSON() {
+        // TODO write JSON representation
+        return "";
     }
 }

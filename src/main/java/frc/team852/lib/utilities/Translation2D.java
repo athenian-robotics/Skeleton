@@ -3,8 +3,8 @@ package frc.team852.lib.utilities;
 public class Translation2D implements ITranslation2D {
 
 
-    protected double x;
-    protected double y;
+    protected final double x;
+    protected final double y;
 
     public Translation2D() {
         this.x = 0;
@@ -17,8 +17,8 @@ public class Translation2D implements ITranslation2D {
     }
 
     public Translation2D(Translation2D other) {
-        this.x = other.getX();
-        this.y = other.getY();
+        this.x = other.x;
+        this.y = other.y;
     }
 
     public double getX() {
