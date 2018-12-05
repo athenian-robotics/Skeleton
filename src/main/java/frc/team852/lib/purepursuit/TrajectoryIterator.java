@@ -3,7 +3,7 @@ package frc.team852.lib.purepursuit;
 import frc.team852.lib.utilities.Rotation2D;
 
 public class TrajectoryIterator {
-    private final double x0, x1, y0, y1, curve0, curve1, rot0, rot1;
+    private final double x0, x1, y0, y1, curve0, curve1;
     private final Rotation2D rot0, rot1;
 
     TrajectoryIterator(TrajectoryPosition p0, TrajectoryPosition p1) {
