@@ -31,4 +31,9 @@ public class TrajectoryPosition implements IPose2D, ICurvature {
     public double getDCurvatureDs() {
         return 0;
     }
+
+    @Override
+    public String toJSON() {
+        return null;
+    }
 }

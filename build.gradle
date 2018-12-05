@@ -1,6 +1,16 @@
 plugins {
     id "java"
+    id "eclipse"
+    id "idea"
     id "edu.wpi.first.GradleRIO" version "2019.0.0-alpha-3"
+}
+
+
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+    }
 }
 
 def ROBOT_MAIN_CLASS = "frc.team852.Robot"
@@ -30,9 +40,11 @@ deploy {
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
 // Also defines JUnit 4.
 dependencies {
-    compile wpilib()
-    compile ctre()
-//    compile pathfinder()
+    implementation wpilib()
+    implementation ctre()
+    implementation pathfinder()
+    implementation 'org.json:json:20180130'
+
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
