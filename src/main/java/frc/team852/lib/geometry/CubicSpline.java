@@ -7,7 +7,7 @@ public class CubicSpline extends Spline {
 
     public CubicSpline(Pose2D start, Pose2D finish) {
         super(start, finish);
-        double scale = 2 * start.getTranslation().distance(finish.getTranslation());
+        double scale = 2 * Math.hypot(x1-x0, y1-y0);
         x0 = start.getTranslation().getX();
         x1 = finish.getTranslation().getX();
         dx0 = start.getRotation().getCos() * scale;
