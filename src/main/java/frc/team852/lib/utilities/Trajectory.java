@@ -52,8 +52,8 @@ public class Trajectory<P extends IPose2D> implements Iterable<P>, JSONWritable 
 
     @Override
     public String toJSON() {
-        StringBuilder res = new StringBuilder();
+        StringBuilder res = new StringBuilder("{\"type\": \"Trajectory\", \"trajectory\": [");
         this.forEach(p -> res.append(p.toJSON()).append(", "));
-        return res.toString();
+        return res.append("]}").toString();
     }
 }

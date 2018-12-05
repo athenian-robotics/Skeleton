@@ -37,7 +37,7 @@ public class Translation2D implements ITranslation2D {
 
     @Override
     public String toJSON() {
-        return String.format("{\"x\": %s, \"y\": %s}", x, y);
+        return String.format("{\"type\": \"Translation2D\", \"x\": %s, \"y\": %s}", x, y);
     }
 
 }
