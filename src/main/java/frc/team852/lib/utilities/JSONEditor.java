@@ -44,5 +44,5 @@ public final class JSONEditor {
     public String absolutePath() {
             return absPath;
     }
-    }
 }
+
