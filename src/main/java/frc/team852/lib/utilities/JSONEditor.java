@@ -44,14 +44,5 @@ public final class JSONEditor {
     public String absolutePath() {
             return absPath;
     }
-
-    // TESTING WILL DELETE
-    public static void main(String args[]) throws IOException {
-        //JSONEditor.setName(");
-        Pose2D ok = new Pose2D();
-        JSONEditor.dumpJSON(ok);
-        // Pose2DWithCurvature ok1 = new Pose2DWithCurvature(1, 2,3);
-        //System.out.println(JSONDump.getFilename());
-        //System.out.println(JSONDump.getAbsolutePath());
     }
 }
