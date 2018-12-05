@@ -4,7 +4,6 @@ public class Pose2D implements IPose2D {
 
     protected final Translation2D translation;
     protected final Rotation2D rotation;
-    public String fileName = null;
 
     public Pose2D() {
         this.translation = new Translation2D();
@@ -27,10 +26,6 @@ public class Pose2D implements IPose2D {
         rotation = new Rotation2D(other.getRotation());
     }
 
-    public void setJSON(String name) {
-        this.fileName = name;
-    }
-
     @Override
     public Rotation2D getRotation() {
         return this.rotation;
@@ -46,4 +41,8 @@ public class Pose2D implements IPose2D {
         return this.translation;
     }
 
+    @Override
+    public String toJSON() {
+        return String.format("{\"translation\": %s, \"rotation\": %s}", translation, rotation);
+    }
 }
