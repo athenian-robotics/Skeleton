@@ -1,0 +1,21 @@
+[
+  {
+    "Translation": {"x": 0, "y": 0},
+    "Curvature": 0.25,
+    "Orieintation": 90,
+    "Speed": 1
+  },
+  {
+    "Translation": {"x": 4, "y": 4},
+    "Curvature": 0.25,
+    "Orieintation": 90,
+    "Speed": 1
+  },
+  {
+    "Translation": {"x": 10, "y": 10},
+    "Curvature": 0.25,
+    "Orieintation": 90,
+    "Speed": 1
+  },
+
+]

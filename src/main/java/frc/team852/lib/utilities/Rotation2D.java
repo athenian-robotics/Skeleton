@@ -32,9 +32,4 @@ public class Rotation2D implements IRotation2D {
         return this;
     }
 
-    @Override
-    public String toJSON() {
-        // TODO write JSON representation
-        return "";
-    }
 }

@@ -18,10 +18,5 @@ public class TrajectoryIterator {
 
         rot0 = p0.getRotation();
         rot1 = p1.getRotation();
-
-
-
-
-
     }
 }
