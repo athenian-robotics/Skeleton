@@ -21,4 +21,14 @@ public class TrajectoryPosition implements IPose2D, ICurvature {
     public Translation2D getTranslation() {
         return null;
     }
+
+    @Override
+    public double getCurvature() {
+        return 0;
+    }
+
+    @Override
+    public double getDCurvatureDs() {
+        return 0;
+    }
 }

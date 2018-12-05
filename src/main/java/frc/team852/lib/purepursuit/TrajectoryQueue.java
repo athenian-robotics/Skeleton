@@ -8,4 +8,28 @@ import java.util.Queue;
 public class TrajectoryQueue implements PoseQueue {
 
 
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public boolean add() {
+        return false;
+    }
+
+    @Override
+    public TrajectoryPosition remove() {
+        return null;
+    }
+
+    @Override
+    public void clear() {
+
+    }
 }

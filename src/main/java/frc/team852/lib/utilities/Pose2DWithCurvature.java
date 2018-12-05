@@ -36,9 +36,4 @@ public class Pose2DWithCurvature implements IPose2D, ICurvature {
         return dcurvature_ds;
     }
 
-    @Override
-    public String toJSON() {
-        // TODO write JSON representation
-        return "";
-    }
 }
