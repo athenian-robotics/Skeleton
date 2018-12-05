@@ -55,6 +55,8 @@ public final class JSONEditor {
         okokokok.add(okok);
         okokokok.add(okokok);
 
+        System.out.println(okokokok.toJSON());
+
         JSONEditor.dumpJSON(okokokok);
     }
 }
