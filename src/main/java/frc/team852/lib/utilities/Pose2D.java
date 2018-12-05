@@ -43,6 +43,6 @@ public class Pose2D implements IPose2D {
 
     @Override
     public String toJSON() {
-        return String.format("{\"type\": \"Pose2D\", \"translation\":f %s, \"rotation\": %s}", translation.toJSON(), rotation.toJSON());
+        return String.format("{\"type\": \"Pose2D\", \"translation\": %s, \"rotation\": %s}", translation.toJSON(), rotation.toJSON());
     }
 }
