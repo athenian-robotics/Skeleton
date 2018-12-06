@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.Encoder;
 
+import frc.team852.Robot;
 import frc.team852.RobotMap;
 import frc.team852.commands.DriveChzStick;
 import frc.team852.commands.DriveTankStick;
@@ -22,19 +23,19 @@ public class DrivetrainSubsystem extends Subsystem {
 
 
     public DrivetrainSubsystem() {
-       setNeutralMode(NeutralMode.Brake);
+        setNeutralMode(NeutralMode.Brake);
         leftEncoder = RobotMap.leftDriveEncoder;
         rightEncoder = RobotMap.rightDriveEncoder;
         this.leftEncoder.reset();
         this.rightEncoder.reset();
     }
 
-    public void resetEncoders(){
+    public void zeroEncoders() {
         this.leftEncoder.reset();
         this.rightEncoder.reset();
     }
 
-    public void setNeutralMode(NeutralMode mode){
+    public void setNeutralMode(NeutralMode mode) {
         RobotMap.backLeft.setNeutralMode(mode);
         RobotMap.backRight.setNeutralMode(mode);
         RobotMap.frontLeft.setNeutralMode(mode);

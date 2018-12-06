@@ -68,7 +68,7 @@ public class Robot extends TimedRobot {
     // called when disabled, clear system
     @Override
     public void disabledInit() {
-        drivetrain.resetEncoders();
+        drivetrain.zeroEncoders();
     }
 
     @Override

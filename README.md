@@ -6,7 +6,7 @@ It has a ~~hopefully~~ working tank drive and cheesy drive, PID controls, and so
 # Dependencies
 
 > **[GradleRIO](https://github.com/wpilibsuite/GradleRIO)**
-> * `chmod +x` and run `dep_install.sh` to download and install and setup GradleRIO on Linux/MacOS
+> * `chmod +x` and run `./dep_install.sh` to download and install and setup GradleRIO on Linux/MacOS
 > * Run `dep_install`  (currently untested) to download and install and setup GradleRIO on Windows
 
 
@@ -28,9 +28,9 @@ Subsystem class is declared and initialized in Robot <p>
 The subsystem object is passed into a command
 
 
-# TODO 
+# TODO
 
-> Implement Feed Forward Augment Control PID 
+> Implement Feed Forward Augment Control PID
 
 > Add Encoder Skeleton
 

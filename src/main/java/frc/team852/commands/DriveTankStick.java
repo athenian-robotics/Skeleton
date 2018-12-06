@@ -1,13 +1,14 @@
 package frc.team852.commands;
+
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team852.OI;
 import frc.team852.Robot;
+import frc.team852.RobotMap;
 
 public class DriveTankStick extends Command {
 
 
     public DriveTankStick() {
-        // TODO why super(); ?
         super();
         requires(Robot.drivetrain);
     }
