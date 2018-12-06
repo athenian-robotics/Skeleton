@@ -1,12 +1,17 @@
 package frc.team852.lib.purepursuit;
 
+import frc.team852.lib.utilities.IPose2D;
+import frc.team852.lib.utilities.Trajectory;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.google.gson.Gson;
+
 import java.io.*;
 import java.util.Iterator;
 import java.util.LinkedList;
+
 
 // parse json file
 public class TrajectoryQueue<P> implements Iterable<P> {
@@ -26,7 +31,7 @@ public class TrajectoryQueue<P> implements Iterable<P> {
 
         try {
             Object obj = parser.parse(new FileReader(absPath));
-            JSONObject  jsonContent = (JSONObject) obj;
+            JSONObject jsonContent = (JSONObject) obj;
 
             String type = (String) jsonContent.get("type");
         } catch (ParseException | IOException e) {
@@ -57,7 +62,6 @@ public class TrajectoryQueue<P> implements Iterable<P> {
 
     public boolean isEmpty() {
         return trajectoryQueue.isEmpty();
-
     }
 
     public String getAbsPath() {
@@ -73,3 +77,15 @@ public class TrajectoryQueue<P> implements Iterable<P> {
 
     }
 }
+
+/**
+ * class TrajectoryDeserializer {
+ * String trajectoryTypeElement;
+ * <p>
+ * TrajectoryDeserializer(String trajectoryTypeElement) {
+ * this.trajectoryTypeElement = trajectoryTypeElement;
+ * }
+ * <p>
+ * public
+ * }
+ **/

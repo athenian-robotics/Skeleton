@@ -44,6 +44,8 @@ dependencies {
     implementation ctre()
     implementation pathfinder()
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')
