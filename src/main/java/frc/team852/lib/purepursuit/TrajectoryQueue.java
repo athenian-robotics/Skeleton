@@ -1,35 +1,75 @@
 package frc.team852.lib.purepursuit;
 
-import java.util.Collection;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import java.io.*;
 import java.util.Iterator;
-import java.util.Queue;
+import java.util.LinkedList;
 
 // parse json file
-public class TrajectoryQueue implements PoseQueue {
+public class TrajectoryQueue<P> implements Iterable<P> {
+    private static final String workingPath = "/src/main/java/frc/team852/lib/utilities/generated_path/";
+    private String systemPath = (new File("./")).getAbsoluteFile() + workingPath;
+    private String absPath;
 
 
-    @Override
-    public int size() {
-        return 0;
+    protected LinkedList<P> trajectoryQueue;
+
+
+    TrajectoryQueue(String name) {
+
+        absPath = systemPath + name;
+
+        JSONParser parser = new JSONParser();
+
+        try {
+            Object obj = parser.parse(new FileReader(absPath));
+            JSONObject  jsonContent = (JSONObject) obj;
+
+            String type = (String) jsonContent.get("type");
+        } catch (ParseException | IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
-    @Override
-    public boolean isEmpty() {
-        return false;
+    public boolean add(P p) {
+        return trajectoryQueue.add(p);
     }
 
-    @Override
-    public boolean add() {
-        return false;
-    }
-
-    @Override
-    public TrajectoryPosition remove() {
+    public Iterator<P> iterator() {
         return null;
     }
 
-    @Override
-    public void clear() {
+    public P dequeue() {
+        return trajectoryQueue.removeFirst();
+    }
+
+    public P peek() {
+        return trajectoryQueue.peek();
+    }
+
+    public int size() {
+        return trajectoryQueue.size();
+    }
+
+    public boolean isEmpty() {
+        return trajectoryQueue.isEmpty();
+
+    }
+
+    public String getAbsPath() {
+        return absPath;
+    }
+
+    public String toString() {
+
+    }
+
+    public static void main(String[] args) {
+        TrajectoryQueue ok = new TrajectoryQueue("path_one.json");
 
     }
 }

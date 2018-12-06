@@ -8,5 +8,6 @@ public interface PoseQueue {
     // if queue is empty, returns null, or else retrieves and remove position
     public TrajectoryPosition remove();
     public void clear();
+    public String toString();
 
 }

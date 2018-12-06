@@ -43,7 +43,7 @@ dependencies {
     implementation wpilib()
     implementation ctre()
     implementation pathfinder()
-    implementation 'org.json:json:20180130'
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')

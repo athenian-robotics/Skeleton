@@ -26,9 +26,18 @@ public final class JSONEditor {
 
     public static void dumpJSON(JSONWritable jw) throws IOException {
         // TODO Donovan implement JSON
-        // if (!checkFile(filename)) return false;
+        System.out.println(absPath);
         FileWriter file = new FileWriter(absPath);
-        file.write(jw.toJSON());
+
+        try {
+            file.write(jw.toJSON());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            file.flush();
+            file.close();
+        }
     }
 
     public static void setName(String name) {
@@ -46,6 +55,8 @@ public final class JSONEditor {
     }
 
     public static void main(String[] args) throws IOException {
+
+        JSONEditor.setName("path_one.json");
         Pose2D ok = new Pose2D();
         Pose2D okok = new Pose2D();
         Pose2D okokok = new Pose2D();
@@ -58,6 +69,8 @@ public final class JSONEditor {
         System.out.println(okokokok.toJSON());
 
         JSONEditor.dumpJSON(okokokok);
+
+
     }
 }
 
