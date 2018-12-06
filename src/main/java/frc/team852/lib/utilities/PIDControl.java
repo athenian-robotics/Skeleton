@@ -1,4 +1,4 @@
-package frc.team852.utilities;
+package frc.team852.lib.utilities;
 
 /**
  * output = P × error + I × ∑error + D × error/t
