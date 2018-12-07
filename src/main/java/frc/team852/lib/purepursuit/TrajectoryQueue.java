@@ -19,7 +19,6 @@ public class TrajectoryQueue<P> implements Iterable<P> {
     private String systemPath = (new File("./")).getAbsoluteFile() + workingPath;
     private String absPath;
 
-
     protected LinkedList<P> trajectoryQueue;
 
 
@@ -69,7 +68,7 @@ public class TrajectoryQueue<P> implements Iterable<P> {
     }
 
     public String toString() {
-
+        return null;
     }
 
     public static void main(String[] args) {

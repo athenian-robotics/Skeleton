@@ -7,8 +7,6 @@ import frc.team852.lib.utilities.Translation2D;
 
 public class TrajectoryPosition implements IPose2D, ICurvature {
 
-
-
     @Override
     public IPose2D getPose() {
         return null;
