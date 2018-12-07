@@ -13,7 +13,7 @@ import frc.team852.subsystems.DrivetrainSubsystem;
 
 public class EncoderCalib extends Command {
 
-    private final int numRot = 5;
+    private final int numRot = 20;
     private DrivetrainSubsystem drivetrain;
     private Encoder leftEncoder, rightEncoder;
     private DigitalInput leftSwitch, rightSwitch;
@@ -37,8 +37,8 @@ public class EncoderCalib extends Command {
         System.out.println("[**] EncoderCalib initialized");
         leftCount = 0;
         rightCount = 0;
-        leftSpeed = -0.5;
-        rightSpeed = -0.5;
+        leftSpeed = -0.75;
+        rightSpeed = -0.75;
         lFirstRot = true;
         rFirstRot = true;
         leftSwitchLast = false;
@@ -59,11 +59,15 @@ public class EncoderCalib extends Command {
             rFirstRot = false;
         }
 
-        if (leftSwitch.get() && !leftSwitchLast)
+        if (leftSwitch.get() && !leftSwitchLast) {
             leftCount++;
+            System.out.printf("Left hit @ %d\n", leftEncoder.get());
+        }
 
-        if (rightSwitch.get() && !rightSwitchLast)
+        if (rightSwitch.get() && !rightSwitchLast) {
             rightCount++;
+            System.out.printf("Right hit @ %d\n", rightEncoder.get());
+        }
 
         leftSwitchLast = leftSwitch.get();
         rightSwitchLast = rightSwitch.get();
@@ -72,13 +76,13 @@ public class EncoderCalib extends Command {
         rightSpeed = (rightCount >= numRot) ? 0.0 : rightSpeed;
 
         drivetrain.drive(leftSpeed, rightSpeed);
-        System.out.println("leftCount = " + leftCount);
-        System.out.println("rightCount = " + rightCount);
+        //System.out.println("leftCount = " + leftCount);
+        //System.out.println("rightCount = " + rightCount);
     }
 
     @Override
     protected boolean isFinished() {
-        System.out.println("(leftCount >= numRot && rightCount >= numRot) = " + (leftCount >= numRot && rightCount >= numRot));
+        //System.out.println("(leftCount >= numRot && rightCount >= numRot) = " + (leftCount >= numRot && rightCount >= numRot));
         return leftCount >= numRot && rightCount >= numRot;
     }
 
@@ -86,7 +90,7 @@ public class EncoderCalib extends Command {
     protected void end() {
         // I forget if this halts the motors or just sets the drive val to 0
         Robot.drivetrain.stop();
-        System.out.printf("[**] Left tics %d :: Right tics %d\n", leftEncoder.get(), rightEncoder.get());
+        System.out.printf("[**] Left tics %d (AVG: %f):: Right tics %d (AVG: %f)\n", leftEncoder.get(), (double)leftEncoder.get()/numRot, rightEncoder.get(), (double)rightEncoder.get()/numRot);
     }
 
     protected void interrupted() {
