@@ -13,7 +13,7 @@ import frc.team852.subsystems.DrivetrainSubsystem;
 
 public class EncoderCalib extends Command {
 
-    private final int numRot = 20;
+    private final int numRot = 40;
     private DrivetrainSubsystem drivetrain;
     private Encoder leftEncoder, rightEncoder;
     private DigitalInput leftSwitch, rightSwitch;
@@ -37,8 +37,8 @@ public class EncoderCalib extends Command {
         System.out.println("[**] EncoderCalib initialized");
         leftCount = 0;
         rightCount = 0;
-        leftSpeed = -0.75;
-        rightSpeed = -0.75;
+        leftSpeed = -0.8;
+        rightSpeed = -0.8;
         lFirstRot = true;
         rFirstRot = true;
         leftSwitchLast = false;
