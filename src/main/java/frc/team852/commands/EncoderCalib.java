@@ -5,75 +5,92 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team852.Robot;
 import frc.team852.RobotMap;
+import frc.team852.subsystems.DrivetrainSubsystem;
+
+/**
+ * Just a simple command to check how many tics/rev an encoder is using
+ */
 
 public class EncoderCalib extends Command {
-    private int numEpoch;
-    private int rotCount;
-    private boolean leftSide;
-    private double runSpeed;
-    private DigitalInput testSwitch = RobotMap.testSwtich;
-    private Encoder testEncoder;
-    private boolean lastSwitchVal;
+
+    private final int numRot = 5;
+    private DrivetrainSubsystem drivetrain;
+    private Encoder leftEncoder, rightEncoder;
+    private DigitalInput leftSwitch, rightSwitch;
+    private double leftSpeed, rightSpeed;
+    private int leftCount, rightCount;
+    private boolean leftSwitchLast, rightSwitchLast, lFirstRot, rFirstRot;
+
     public EncoderCalib() {
         requires(Robot.drivetrain);
-        this.numEpoch = 3;
-        this.leftSide = false;
-        this.runSpeed = 0.5;
-        this.rotCount = 0;
-        this.testEncoder = leftSide ? RobotMap.leftDriveEncoder : RobotMap.rightDriveEncoder;
-        this.lastSwitchVal = false;
-    }
-
-    public EncoderCalib s_runSpeed(double speed) {
-        this.runSpeed = speed;
-        return this;
-    }
-
-    public EncoderCalib s_leftSide(boolean leftSide) {
-        this.leftSide = leftSide;
-        return this;
-    }
-
-    public EncoderCalib s_numEpoch(int numEpoch) {
-        this.numEpoch = numEpoch;
-        return this;
-    }
-
-    protected void initialize() {
-        testEncoder.reset();
+        drivetrain = Robot.drivetrain;
+        leftEncoder = RobotMap.leftDriveEncoder;
+        rightEncoder = RobotMap.rightDriveEncoder;
+        leftSwitch = RobotMap.leftSwitch;
+        rightSwitch = RobotMap.rightSwitch;
     }
 
     @Override
+    protected void initialize() {
+        Robot.drivetrain.stop();
+        Robot.drivetrain.zeroEncoders();
+        System.out.println("[**] EncoderCalib initialized");
+        leftCount = 0;
+        rightCount = 0;
+        leftSpeed = -0.5;
+        rightSpeed = -0.5;
+        lFirstRot = true;
+        rFirstRot = true;
+        leftSwitchLast = false;
+        rightSwitchLast = false;
+    }
+
+
+    @Override
     protected void execute() {
-        if (!leftSide) {
-            Robot.drivetrain.drive(runSpeed, 0);
-        } else {
-            Robot.drivetrain.drive(0, runSpeed);
+        if (lFirstRot && leftSwitch.get()) {
+            leftEncoder.reset();
+            leftSwitchLast = true;
+            lFirstRot = false;
         }
-        System.out.println("testEncoder = " + testEncoder.get());
-        if (testSwitch.get() && testSwitch.get() != lastSwitchVal) {
-            System.out.println("SWITCH HIT");
-            rotCount++;
-            lastSwitchVal = true;
+        if (rFirstRot && rightSwitch.get()) {
+            leftEncoder.reset();
+            rightSwitchLast = true;
+            rFirstRot = false;
         }
-        lastSwitchVal = false;
+
+        if (leftSwitch.get() && !leftSwitchLast)
+            leftCount++;
+
+        if (rightSwitch.get() && !rightSwitchLast)
+            rightCount++;
+
+        leftSwitchLast = leftSwitch.get();
+        rightSwitchLast = rightSwitch.get();
+
+        leftSpeed = (leftCount >= numRot) ? 0.0 : leftSpeed;
+        rightSpeed = (rightCount >= numRot) ? 0.0 : rightSpeed;
+
+        drivetrain.drive(leftSpeed, rightSpeed);
+        System.out.println("leftCount = " + leftCount);
+        System.out.println("rightCount = " + rightCount);
     }
 
     @Override
     protected boolean isFinished() {
-        return numEpoch == rotCount;
+        System.out.println("(leftCount >= numRot && rightCount >= numRot) = " + (leftCount >= numRot && rightCount >= numRot));
+        return leftCount >= numRot && rightCount >= numRot;
     }
 
     @Override
     protected void end() {
-        System.out.println("DONE");
-        int ticks = testEncoder.get();
-        System.out.printf("NUM ROTATIONS: %d\n\t\tTICKS COUNTED: %d\n\t\tAVG TICKS/ROT: %f\n\n",
-                numEpoch, ticks, (double) ticks / numEpoch);
+        // I forget if this halts the motors or just sets the drive val to 0
         Robot.drivetrain.stop();
+        System.out.printf("[**] Left tics %d :: Right tics %d\n", leftEncoder.get(), rightEncoder.get());
     }
-    @Override
-    protected void interrupted(){
-        end();
+
+    protected void interrupted() {
+        Robot.drivetrain.stop();
+        System.out.println("[!!!!] Interupted");
     }
 }

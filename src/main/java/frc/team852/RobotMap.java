@@ -32,8 +32,8 @@ public class RobotMap {
 
     public static DifferentialDrive robotDrive = new DifferentialDrive(leftDrive, rightDrive);
 
-    public static Encoder leftDriveEncoder = new Encoder(0,1);
-    public static Encoder rightDriveEncoder = new Encoder(2, 3);
-    public static DigitalInput testSwtich = new DigitalInput(4);
-
+    public static Encoder rightDriveEncoder = new Encoder(0, 1);
+    public static Encoder leftDriveEncoder = new Encoder(2,3);
+    public static DigitalInput leftSwitch = new DigitalInput(4);
+    public static DigitalInput rightSwitch = new DigitalInput(5);
 }
