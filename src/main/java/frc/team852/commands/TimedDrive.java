@@ -15,8 +15,8 @@ public class TimedDrive extends Command {
 
     private double left;
     private double right;
-    private double time;
-    final private double power = 1;
+    //private double time;
+    //final private double power = 1;
     private static int count = 0;
     PIDControl pid = new PIDControl(1,2,3);
 

@@ -17,7 +17,7 @@ import frc.team852.subsystems.DrivetrainSubsystem;
 
 public class EncoderCalib extends Command {
 
-    PIDCommand
+
     private final int numRot = 40;
     private DrivetrainSubsystem drivetrain;
     private Encoder leftEncoder, rightEncoder;
