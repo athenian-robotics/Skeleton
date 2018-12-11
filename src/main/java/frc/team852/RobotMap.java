@@ -36,4 +36,5 @@ public class RobotMap {
     public static Encoder leftDriveEncoder = new Encoder(2,3);
     public static DigitalInput leftSwitch = new DigitalInput(4);
     public static DigitalInput rightSwitch = new DigitalInput(5);
+
 }
