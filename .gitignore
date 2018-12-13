@@ -39,3 +39,6 @@ out/
 
 # Personal scripts
 deploy.sh
+
+# Random Stuff
+*.orig
