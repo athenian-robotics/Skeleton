@@ -40,11 +40,11 @@ deploy {
 // Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
 // Also defines JUnit 4.
 dependencies {
-    implementation wpilib()
-    implementation ctre()
-    implementation pathfinder()
-    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-    implementation 'com.google.code.gson:gson:2.8.5'
+    compile wpilib()
+    compile ctre()
+    //compile pathfinder()
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+    compile 'com.google.code.gson:gson:2.8.5'
 
 }
 

@@ -40,4 +40,8 @@ gradle*
 .settings
 
 # Personal scripts
+<<<<<<< HEAD
 deploy.sh
+=======
+deploy.sh
+>>>>>>> Trajectory-Planning_J

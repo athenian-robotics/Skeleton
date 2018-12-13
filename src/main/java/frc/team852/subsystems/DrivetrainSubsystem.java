@@ -30,7 +30,7 @@ public class DrivetrainSubsystem extends Subsystem {
         this.rightEncoder.reset();
     }
 
-    public void zeroEncoders() {
+    public void resetEncoders() {
         this.leftEncoder.reset();
         this.rightEncoder.reset();
     }
@@ -44,7 +44,6 @@ public class DrivetrainSubsystem extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-        // init command initiates on call
         setDefaultCommand(new DriveTankStick());
     }
 
@@ -75,9 +74,8 @@ public class DrivetrainSubsystem extends Subsystem {
 
     public void drive(double left, double right) {
         // drive based on input
-        // TODO remove debug
-        // System.out.printf("ENCODERS\n\tRIGHT ENC: %d\n\tLEFT ENC: %d\n\n", rightEncoder.get(), leftEncoder.get());
-        this.robotDrive.tankDrive(left/2, right/2);
+        // TODO stop crippling the robot sooner or later
+        this.robotDrive.tankDrive(left, right);
     }
 
     private double sketch_exp(double input, double pow) {
