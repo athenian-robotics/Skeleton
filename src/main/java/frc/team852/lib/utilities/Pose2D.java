@@ -1,5 +1,4 @@
 package frc.team852.lib.utilities;
-import java.io.*;
 
 public class Pose2D implements IPose2D {
 

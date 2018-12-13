@@ -7,8 +7,6 @@ import frc.team852.Robot;
 /**
  * This entire command is specifically written for TANK DRIVE
  */
-// TODO does print even work here??
-// TODO print to driver station
 
 public class TimedDrive extends Command {
 

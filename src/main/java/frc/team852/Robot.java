@@ -12,22 +12,19 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team852.subsystems.DrivetrainSubsystem;
 import frc.team852.subsystems.SampleSubsystem;
-
-// TODO add PID Control
-// TODO add Triggers for Drivetrain?
-// TODO add xBOX Buttons
 
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
  * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.properties file in the
- * project.
+ * creating this project, you must also update the build.gradle file in the
+ * top folder of the project.
  */
 
-// If you rename or move this class, update the build.properties file in the project root
+// TODO add smartdashboard PID tuning
 
 public class Robot extends TimedRobot {
 
@@ -45,6 +42,7 @@ public class Robot extends TimedRobot {
     // var
     public String gameMsg;
     public static DriverStation driverStation = DriverStation.getInstance();
+    double[] leftGainz, rightGainz, oldLGainz, oldRGainz;
 
     // initialization
     @Override
@@ -57,18 +55,26 @@ public class Robot extends TimedRobot {
         oi = new OI(); // must be defined last
         new RobotMap(); // empty declaration to create it
 
-
-
         // chooser.addDefault("Default Auto", new SampleCommand());
         // chooser.addObject("My Auto", new MyAutoCommand());
         // SmartDashboard.putData("Auto mode", chooser);
+        leftGainz = new double[3];
+        rightGainz = new double[3];
+        oldLGainz = new double[3];
+        oldRGainz = new double[3];
+        for (String key : SmartDashboard.getKeys()) {
+            SmartDashboard.delete(key);
+        }
+        SmartDashboard.putNumberArray("LEFT_PID", leftGainz);
+        SmartDashboard.putNumberArray("RIGHT_PID", rightGainz);
+        SmartDashboard.updateValues();
     }
 
 
-    // called when disabled, clear system
+    // called when disabled, clear systema
     @Override
     public void disabledInit() {
-        drivetrain.zeroEncoders();
+        drivetrain.resetEncoders();
     }
 
     @Override
@@ -77,24 +83,24 @@ public class Robot extends TimedRobot {
     }
 
     /**
+     * <p>
      * This autonomous (along with the chooser code above) shows how to select
      * between different autonomous modes using the dashboard. The sendable
      * chooser code works with the Java SmartDashboard. If you prefer the
      * LabVIEW Dashboard, remove all of the chooser code and uncomment the
      * getString code to get the auto name from the text box below the Gyro
-     *
-     * <p>You can add additional auto modes by adding additional commands to the
+     * </p>
+     * <p>
+     * You can add additional auto modes by adding additional commands to the
      * chooser code above (like the commented example) or additional comparisons
      * to the switch structure below with additional strings & commands.
+     * </p>
      */
 
     @Override
     public void autonomousInit() {
         autonomousCommand = chooser.getSelected();
 
-
-        // gaming messages during auto:
-        // this.gameMsg = Robot.driverStation.getGameSpecificMessage();
 
         /*
          * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -126,14 +132,38 @@ public class Robot extends TimedRobot {
     }
 
 
+    private void updatePIDGainz() {
+        leftGainz = SmartDashboard.getNumberArray("LEFT_PID", leftGainz);
+        if (leftGainz != oldLGainz) {
+            RobotMap.leftDrivePID.setGainz(leftGainz);
+            oldLGainz = leftGainz;
+            RobotMap.leftDrivePID.setGainz(leftGainz);
+            RobotMap.leftDrivePID.reset();
+        }
+        rightGainz = SmartDashboard.getNumberArray("RIGHT_PID", rightGainz);
+        if (rightGainz != oldRGainz) {
+            RobotMap.rightDrivePID.setGainz(rightGainz);
+            oldRGainz = rightGainz;
+            RobotMap.rightDrivePID.setGainz(rightGainz);
+            RobotMap.rightDrivePID.reset();
+        }
+    }
+
     // called periodically during operator control
+
     @Override
     public void teleopPeriodic() {
+        updatePIDGainz();
         Scheduler.getInstance().run();
     }
 
     // called periodically during testing
     @Override
     public void testPeriodic() {
+    }
+
+    @Override
+    public void robotPeriodic() {
+        SmartDashboard.updateValues();
     }
 }

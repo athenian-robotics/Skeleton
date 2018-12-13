@@ -21,7 +21,6 @@ public class DriveChzStick extends Command {
 
     @Override
     protected void execute() {
-        // TODO what trigger
         boolean quickTurn = OI.stick2.getTrigger();
 		double forward = OI.stick1.getY();
 		double turn = OI.stick2.getX();

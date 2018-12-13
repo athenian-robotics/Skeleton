@@ -7,10 +7,6 @@ import frc.team852.Robot;
 import frc.team852.RobotMap;
 import frc.team852.subsystems.DrivetrainSubsystem;
 
-/**
- * Just a simple command to check how many tics/rev an encoder is using
- */
-
 public class EncoderCalib extends Command {
 
     private final int numRot = 5;
@@ -33,7 +29,7 @@ public class EncoderCalib extends Command {
     @Override
     protected void initialize() {
         Robot.drivetrain.stop();
-        Robot.drivetrain.zeroEncoders();
+        Robot.drivetrain.resetEncoders();
         System.out.println("[**] EncoderCalib initialized");
         leftCount = 0;
         rightCount = 0;
