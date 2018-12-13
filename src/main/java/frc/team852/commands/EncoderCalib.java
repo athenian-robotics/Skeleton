@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import frc.team852.Robot;
 import frc.team852.RobotMap;
-import frc.team852.lib.utilities.pid.PIDControl;
+import frc.team852.lib.utilities.PIDController;
 import frc.team852.subsystems.DrivetrainSubsystem;
 
 /**

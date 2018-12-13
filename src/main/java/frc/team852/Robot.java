@@ -133,6 +133,7 @@ public class Robot extends TimedRobot {
 
 
     private void updatePIDGainz() {
+        SmartDashboard.updateValues();
         leftGainz = SmartDashboard.getNumberArray("LEFT_PID", leftGainz);
         if (leftGainz != oldLGainz) {
             RobotMap.leftDrivePID.setGainz(leftGainz);

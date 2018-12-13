@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import frc.team852.Robot;
 import frc.team852.RobotMap;
-import frc.team852.lib.utilities.pid.PIDControl;
+import frc.team852.lib.utilities.PIDController;
 
 
 /**
@@ -32,7 +32,7 @@ public class DistanceDrive extends Command {
     private Encoder leftEncoder;
     private Encoder rightEncoder;
 
-    PIDControl pid = new PIDControl(1,1,1);
+    PIDController pid = new PIDController(1,1,1);
 
     public DistanceDrive(double left_power, double right_power, double left_distance, double right_distance) {
         // Use requires() here to declare subsystem dependencies

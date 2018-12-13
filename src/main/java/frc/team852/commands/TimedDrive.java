@@ -3,7 +3,7 @@ package frc.team852.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team852.Robot;
-import frc.team852.lib.utilities.pid.PIDControl;
+import frc.team852.lib.utilities.PIDController;
 
 /**
  * This entire command is specifically written for TANK DRIVE
@@ -16,7 +16,7 @@ public class TimedDrive extends Command {
     //private double time;
     //final private double power = 1;
     private static int count = 0;
-    PIDControl pid = new PIDControl(1,2,3);
+    PIDController pid = new PIDController(1,2,3);
 
     public TimedDrive(double left, double right, double time) {
         requires(Robot.drivetrain);
