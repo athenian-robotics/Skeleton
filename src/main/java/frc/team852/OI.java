@@ -2,12 +2,7 @@ package frc.team852;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team852.commandGroups.SampleAuto;
-import frc.team852.commands.ChangeToChz;
-import frc.team852.commands.ChangeToTank;
 import frc.team852.commands.DriveDistance;
-import frc.team852.commands.EncoderCalib;
 
 
 /**

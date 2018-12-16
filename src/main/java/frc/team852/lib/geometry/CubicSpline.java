@@ -1,6 +1,8 @@
 package frc.team852.lib.geometry;
 
 import frc.team852.lib.utilities.Pose2D;
+import frc.team852.lib.utilities.Rotation2D;
+import frc.team852.lib.utilities.Translation2D;
 
 public class CubicSpline extends Spline {
     private double ax, bx, cx, dx, ay, by, cy, dy, x0, x1, dx0, dx1, y0, y1, dy0, dy1;
@@ -16,11 +18,11 @@ public class CubicSpline extends Spline {
         dx1 = finish.getRotation().getCos() * scale;
         dy0 = start.getRotation().getSin() * scale;
         dy1 = finish.getRotation().getSin() * scale;
-        generatePath();
+        generateEquation();
     }
 
     @Override
-    void generatePath() {
+    void generateEquation() {
         ax = dx0 + dx1 + 2 * x0 - 2 * x1;
         bx = -2 * dx0 - dx1 - 3 * x0 + 3 * x1;
         cx = dx0;
@@ -29,6 +31,21 @@ public class CubicSpline extends Spline {
         by = -2 * dy0 - dy1 - 3 * y0 + 3 * y1;
         cy = dy0;
         dy = y0;
+    }
+
+    @Override
+    Translation2D evaluateFunction(double t) {
+        return new Translation2D(ax * t * t * t + bx * t * t + cx * t + dx, ay * t * t * t + by * t * t + cy * t + dy);
+    }
+
+    @Override
+    Translation2D evaluateDerivative(double t) {
+        return new Translation2D(3 * ax * t * t + 2 * bx * t + cx, 3 * ay * t * t + 2 * by * t + cy);
+    }
+
+    @Override
+    Rotation2D evaluateRotation(double t) {
+        return new Rotation2D(evaluateDerivative(t).getX(), evaluateDerivative(t).getY());
     }
 
     @Override
