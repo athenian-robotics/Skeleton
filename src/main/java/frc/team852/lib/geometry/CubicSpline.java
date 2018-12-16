@@ -5,24 +5,27 @@ import frc.team852.lib.utilities.Rotation2D;
 import frc.team852.lib.utilities.Translation2D;
 
 public class CubicSpline extends Spline {
-    private double ax, bx, cx, dx, ay, by, cy, dy, x0, x1, dx0, dx1, y0, y1, dy0, dy1;
+    private final double ax, bx, cx, dx, ay, by, cy, dy, x0, x1, dx0, dx1, y0, y1, dy0, dy1;
 
     public CubicSpline(Pose2D start, Pose2D finish) {
+        // Set start and finish
         super(start, finish);
+
+        // Set position coefficients
         x0 = start.getTranslation().getX();
         x1 = finish.getTranslation().getX();
         y0 = start.getTranslation().getY();
         y1 = finish.getTranslation().getY();
-        double scale = 2 * Math.hypot(x1-x0, y1-y0);
+
+        // Set derivative coefficients
+        double scale = 2 * start.distanceTo(finish);
         dx0 = start.getRotation().getCos() * scale;
         dx1 = finish.getRotation().getCos() * scale;
         dy0 = start.getRotation().getSin() * scale;
         dy1 = finish.getRotation().getSin() * scale;
-        generateEquation();
-    }
 
-    @Override
-    void generateEquation() {
+
+        // Calculate equation coefficients
         ax = dx0 + dx1 + 2 * x0 - 2 * x1;
         bx = -2 * dx0 - dx1 - 3 * x0 + 3 * x1;
         cx = dx0;
@@ -49,7 +52,19 @@ public class CubicSpline extends Spline {
     }
 
     @Override
-    Pose2D samplePath(float t) {
+    public double lengthLowerBound() {
+        // Lower bound from distance between start and end
+        return Math.hypot(x1 - x0, y1 - y0);
+    }
+
+    @Override
+    public double lengthUpperBound() {
+        // Upper bound from total distance traveled in x and y
+        return Math.hypot(ax / 3 + bx / 2 + cx, ay / 3 + by / 2 + cy);
+    }
+
+    @Override
+    Pose2D samplePath(double t) {
         return null;
     }
 }

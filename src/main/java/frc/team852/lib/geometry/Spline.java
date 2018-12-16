@@ -13,15 +13,13 @@ public abstract class Spline {
         this.finish = finish;
     }
 
-    public Pose2D getStart() {
+    public final Pose2D getStart() {
         return start;
     }
 
-    public Pose2D getFinish() {
+    public final Pose2D getFinish() {
         return finish;
     }
-
-    abstract void generateEquation();
 
     abstract Translation2D evaluateFunction(double t);
 
@@ -29,5 +27,9 @@ public abstract class Spline {
 
     abstract Rotation2D evaluateRotation(double t);
 
-    abstract Pose2D samplePath(float t);
+    public abstract double lengthLowerBound();
+
+    public abstract double lengthUpperBound();
+
+    abstract Pose2D samplePath(double t);
 }

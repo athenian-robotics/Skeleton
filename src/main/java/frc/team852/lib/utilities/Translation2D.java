@@ -3,8 +3,8 @@ package frc.team852.lib.utilities;
 public class Translation2D implements ITranslation2D {
 
 
-    protected final double x;
-    protected final double y;
+    private final double x;
+    private final double y;
 
     public Translation2D() {
         this.x = 0;
@@ -28,6 +28,14 @@ public class Translation2D implements ITranslation2D {
 
     public double getY() {
         return y;
+    }
+
+    public double distanceTo(ITranslation2D other) {
+        return Math.hypot(x - other.getTranslation().x, y - other.getTranslation().y);
+    }
+
+    public Translation2D interpolate(ITranslation2D other, double t) {
+        return new Translation2D(x * (1 - t) + other.getTranslation().x * t, y * (1 - t) + other.getTranslation().y * t);
     }
 
     @Override

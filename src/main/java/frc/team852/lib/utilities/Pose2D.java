@@ -2,8 +2,8 @@ package frc.team852.lib.utilities;
 
 public class Pose2D implements IPose2D {
 
-    protected final Translation2D translation;
-    protected final Rotation2D rotation;
+    private final Translation2D translation;
+    private final Rotation2D rotation;
 
     public Pose2D() {
         this.translation = new Translation2D();
@@ -24,6 +24,14 @@ public class Pose2D implements IPose2D {
     public Pose2D(final Pose2D other) {
         translation = new Translation2D(other.getTranslation());
         rotation = new Rotation2D(other.getRotation());
+    }
+
+    public double distanceTo(ITranslation2D other) {
+        return getTranslation().distanceTo(other);
+    }
+
+    public Pose2D interpolate(IPose2D other, double t) {
+        return new Pose2D(translation.interpolate(other.getTranslation(), t), rotation.interpolate(other.getRotation(), t));
     }
 
     @Override

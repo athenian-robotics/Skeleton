@@ -1,12 +1,17 @@
 package frc.team852.lib.utilities;
 
 public class Rotation2D implements IRotation2D {
-    protected final double cos;
-    protected final double sin;
+    private final double cos;
+    private final double sin;
 
     public Rotation2D() {
         this.cos = 1;
         this.sin = 0;
+    }
+
+    public Rotation2D(double angle) {
+        this.cos = Math.cos(angle);
+        this.sin = Math.sin(angle);
     }
 
     public Rotation2D(double cos, double sin) {
@@ -25,6 +30,19 @@ public class Rotation2D implements IRotation2D {
 
     public double getSin() {
         return sin;
+    }
+
+    public Rotation2D inverse() {
+        return new Rotation2D(cos, -sin);
+    }
+
+    public Rotation2D interpolate(IRotation2D other, double t) {
+        // TODO please finish
+        Rotation2D o = other.getRotation().inverse();
+        return new Rotation2D(
+//                cos * o.cos - sin * o.sin,
+//                blah blah blah
+        );
     }
 
     @Override
