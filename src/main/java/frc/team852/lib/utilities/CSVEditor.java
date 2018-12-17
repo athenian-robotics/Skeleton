@@ -1,10 +1,13 @@
 package frc.team852.lib.utilities;
 
-import java.io.*;
+import frc.team852.lib.geometry.PathGenerator;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
 
-public final class JSONEditor {
+public final class CSVEditor {
 
     private static final String systemPath; // from root to generated_path, no file
     private static final String workingPath = "/src/main/java/frc/team852/lib/utilities/generated_path/";
@@ -14,8 +17,8 @@ public final class JSONEditor {
 
 
     static {
-        // set default static file name as test, so it no break and save it to something
-        filename = "test.json";
+        // set default static file name as test (so it doesn't break) and save it to something
+        filename = "test.csv";
         relativePath = workingPath + filename;
         systemPath = (new File("./")).getAbsoluteFile() + workingPath;
         absPath = systemPath + filename;
@@ -23,8 +26,7 @@ public final class JSONEditor {
 
 
 
-    public static void dumpJSON(CSVWritable jw) throws IOException {
-        // TODO Donovan implement JSON
+    public static void dumpCSV(CSVWritable jw) throws IOException {
         System.out.println(absPath);
         FileWriter file = new FileWriter(absPath);
 
@@ -55,19 +57,18 @@ public final class JSONEditor {
 
     public static void main(String[] args) throws IOException {
 
-        JSONEditor.setName("path_one.json");
-        Pose2D ok = new Pose2D();
-        Pose2D okok = new Pose2D();
-        Pose2D okokok = new Pose2D();
+        CSVEditor.setName("path_test.csv");
 
-        Trajectory<Pose2D> okokokok = new Trajectory<>();
-        okokokok.add(ok);
-        okokokok.add(okok);
-        okokokok.add(okokok);
+        Trajectory<Pose2D> trajectory = new Trajectory<>();
+        trajectory.add(new Pose2D(0, 0));
+        trajectory.add(new Pose2D(1, 4, Math.toRadians(90)));
+        trajectory.add(new Pose2D(3, 3, Math.toRadians(135)));
 
-        System.out.println(okokokok.toCSV());
+        PathGenerator path = new PathGenerator(trajectory);
 
-        JSONEditor.dumpJSON(okokokok);
+        System.out.println(path.toCSV());
+
+        CSVEditor.dumpCSV(path);
 
 
     }

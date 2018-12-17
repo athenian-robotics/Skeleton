@@ -69,7 +69,7 @@ public class Rotation2D implements IRotation2D {
     }
 
     @Override
-    public String toJSON() {
-        return String.format("{\"type\": \"Rotation2D\", \"cos\": %s, \"sin\": %s}", cos, sin);
+    public String toCSV() {
+        return String.format("%.6f,%.6f,", cos, sin);
     }
 }

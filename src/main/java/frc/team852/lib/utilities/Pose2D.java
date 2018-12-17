@@ -10,15 +10,34 @@ public class Pose2D implements IPose2D {
         this.rotation = new Rotation2D();
     }
 
-    public Pose2D(double x, double y, final Rotation2D rotation) {
+    public Pose2D(double x, double y) {
         this.translation = new Translation2D(x, y);
-        this.rotation = rotation;
+        this.rotation = new Rotation2D();
     }
 
+    public Pose2D(ITranslation2D translation) {
+        this.translation = translation.getTranslation();
+        this.rotation = new Rotation2D();
+    }
 
-    public Pose2D(final Translation2D translation, final Rotation2D rotation) {
-        this.translation = translation;
-        this.rotation = rotation;
+    public Pose2D(double x, double y, double angle) {
+        this.translation = new Translation2D(x, y);
+        this.rotation = new Rotation2D(angle);
+    }
+
+    public Pose2D(double x, double y, IRotation2D rotation) {
+        this.translation = new Translation2D(x, y);
+        this.rotation = rotation.getRotation();
+    }
+
+    public Pose2D(ITranslation2D translation, double angle) {
+        this.translation = translation.getTranslation();
+        this.rotation = new Rotation2D(angle);
+    }
+
+    public Pose2D(ITranslation2D translation, IRotation2D rotation) {
+        this.translation = translation.getTranslation();
+        this.rotation = rotation.getRotation();
     }
 
     public Pose2D(final Pose2D other) {
@@ -50,7 +69,7 @@ public class Pose2D implements IPose2D {
     }
 
     @Override
-    public String toJSON() {
-        return String.format("{\"type\": \"Pose2D\", \"translation\": %s, \"rotation\": %s}", translation.toJSON(), rotation.toJSON());
+    public String toCSV() {
+        return String.format("%s%s", translation.toCSV(), rotation.toCSV());
     }
 }

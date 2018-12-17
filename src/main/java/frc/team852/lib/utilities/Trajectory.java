@@ -1,20 +1,25 @@
 package frc.team852.lib.utilities;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 
-public class Trajectory<P extends IPose2D> implements Iterable<P>, JSONWritable {
+public class Trajectory<P extends IPose2D> implements Iterable<P>, CSVWritable {
     protected List<P> trajectory;
 
     public Trajectory() {
         this.trajectory = new ArrayList<>();
     }
 
+    public Trajectory(List<P> trajectory) {
+        this.trajectory = trajectory;
+    }
+
     public boolean add(P p) {
         return trajectory.add(p);
+    }
+
+    public void add(int index, P element) {
+        trajectory.add(index, element);
     }
 
     public boolean addAll(Collection<? extends P> c) {
@@ -56,12 +61,11 @@ public class Trajectory<P extends IPose2D> implements Iterable<P>, JSONWritable 
 
 
     @Override
-    public String toJSON() {
-        StringBuilder res = new StringBuilder("{\"type\": \"Trajectory\", \"trajectory\": [");
+    public String toCSV() {
+        StringBuilder res = new StringBuilder();
         for (P p : trajectory) {
-            res.append(p.toJSON()).append(", ");
+            res.append(p.toCSV()).append("\n");
         }
-        if (!trajectory.isEmpty()) res.delete(res.length() - 2, res.length());
-        return res.append("]}").toString();
+        return res.toString();
     }
 }

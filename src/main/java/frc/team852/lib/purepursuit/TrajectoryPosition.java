@@ -33,7 +33,7 @@ public class TrajectoryPosition implements IPose2D, ICurvature {
     }
 
     @Override
-    public String toJSON() {
+    public String toCSV() {
         return null;
     }
 }

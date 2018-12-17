@@ -65,6 +65,6 @@ public class CubicSpline extends Spline {
 
     @Override
     Pose2D samplePath(double t) {
-        return null;
+        return new Pose2D(evaluateFunction(t), evaluateRotation(t));
     }
 }

@@ -44,8 +44,8 @@ public class Translation2D implements ITranslation2D {
     }
 
     @Override
-    public String toJSON() {
-        return String.format("{\"type\": \"Translation2D\", \"x\": %s, \"y\": %s}", x, y);
+    public String toCSV() {
+        return String.format("%.6f,%.6f,", x, y);
     }
 
 }

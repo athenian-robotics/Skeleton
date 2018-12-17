@@ -41,8 +41,7 @@ public class Pose2DWithCurvature implements IPose2D, ICurvature {
     }
 
     @Override
-    public String toJSON() {
-        return String.format("{\"type\": \"Pose2DWithCurvature\", \"pose\": %s, \"curvature\": %s, \"dcurvature_ds\": %s}",
-                pose.toJSON(), curvature, dcurvature_ds);
+    public String toCSV() {
+        return pose.toCSV() + String.format("%.6f,%.6f,", curvature, dcurvature_ds);
     }
 }
