@@ -93,7 +93,7 @@ public class PathGenerator implements CSVWritable {
             int index = 0;
             for (int i = 1; i < numIntervals; i++) {
                 // Find the bounding samples using a linear search
-                while (distances[index + 1] < numIntervals * distIncrement) {
+                while (distances[index + 1] < i * distIncrement) {
                     index++;
                 }
 

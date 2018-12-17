@@ -15,8 +15,9 @@ public class Rotation2D implements IRotation2D {
     }
 
     public Rotation2D(double cos, double sin) {
-        this.cos = cos;
-        this.sin = sin;
+        double length = Math.hypot(cos, sin);
+        this.cos = cos / length;
+        this.sin = sin / length;
     }
 
     public Rotation2D(Rotation2D other) {
@@ -59,7 +60,7 @@ public class Rotation2D implements IRotation2D {
     }
 
     public Rotation2D interpolate(IRotation2D other, double t) {
-        Rotation2D o = other.getRotation().inverse();
+        Rotation2D o = other.getRotation();
         return rotate(t * angleTo(o));
     }
 
