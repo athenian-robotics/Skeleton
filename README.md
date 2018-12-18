@@ -27,7 +27,7 @@ It has a ~~hopefully~~ working tank drive and cheesy drive, PID controls, and so
 > **Subsystems**: declares **what to do**, make a system of commands and system, subsystem declares the methods while commands
 declares the execution orders and function
 
-> **Comamnds**: decalres **how to do an action**, requires subsystem and execute a specific command
+> **Commands**: declares **how to do an action**, requires subsystem and execute a specific command
 
 Subsystem class is declared and initialized in Robot <p>
 The subsystem object is passed into a command
