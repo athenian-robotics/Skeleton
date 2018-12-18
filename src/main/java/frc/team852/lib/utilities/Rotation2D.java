@@ -71,6 +71,6 @@ public class Rotation2D implements IRotation2D {
 
     @Override
     public String toCSV() {
-        return String.format("%.6f,%.6f,", cos, sin);
+        return String.format("%.6f,%.6f", cos, sin);
     }
 }

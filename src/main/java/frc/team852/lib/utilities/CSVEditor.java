@@ -26,12 +26,12 @@ public final class CSVEditor {
 
 
 
-    public static void dumpCSV(CSVWritable jw) throws IOException {
+    public static void dumpCSV(CSVWritable writable) throws IOException {
         System.out.println(absPath);
         FileWriter file = new FileWriter(absPath);
 
         try {
-            file.write(jw.toCSV());
+            file.write(writable.toCSV());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,10 +61,11 @@ public final class CSVEditor {
 
         Trajectory<Pose2D> trajectory = new Trajectory<>();
         trajectory.add(new Pose2D(0, 0));
-        trajectory.add(new Pose2D(1, 4, Math.toRadians(90)));
-        trajectory.add(new Pose2D(3, 3, Math.toRadians(135)));
+        trajectory.add(new Pose2D(2, 1, Math.toRadians(45)));
+        trajectory.add(new Pose2D(0, 0, Math.toRadians(0)));
 
         PathGenerator path = new PathGenerator(trajectory);
+        path.setDistIncrement(0.05);
 
         System.out.println(path.toCSV());
 

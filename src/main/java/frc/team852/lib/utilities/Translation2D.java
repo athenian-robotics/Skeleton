@@ -45,7 +45,7 @@ public class Translation2D implements ITranslation2D {
 
     @Override
     public String toCSV() {
-        return String.format("%.6f,%.6f,", x, y);
+        return String.format("%.6f,%.6f", x, y);
     }
 
 }

@@ -42,6 +42,6 @@ public class Pose2DWithCurvature implements IPose2D, ICurvature {
 
     @Override
     public String toCSV() {
-        return pose.toCSV() + String.format("%.6f,%.6f,", curvature, dcurvature_ds);
+        return String.format("%s,%.6f,%.6f", pose.toCSV(), curvature, dcurvature_ds);
     }
 }

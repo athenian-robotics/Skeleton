@@ -4,26 +4,32 @@ import frc.team852.lib.utilities.CSVWritable;
 import frc.team852.lib.utilities.Pose2D;
 import frc.team852.lib.utilities.Trajectory;
 
+import java.nio.file.Path;
 import java.util.*;
 
 public class PathGenerator implements CSVWritable {
     private static final int maxSamples = 200;
     public static final double defaultIncrement = 0.1;
-    private final Trajectory<Pose2D> trajectory;
-    private final List<Spline> splines = new ArrayList<>();
+    public static final double minIncrement = 0.001;
 
-    PathGenerator(Pose2D start, Pose2D finish) {
+    private final Trajectory<Pose2D> trajectory;
+    private final List<Pose2D> points = new ArrayList<>();
+
+    private double distIncrement = defaultIncrement;
+
+
+    public PathGenerator(Pose2D start, Pose2D finish) {
         trajectory = new Trajectory<Pose2D>();
         trajectory.add(start);
         trajectory.add(finish);
     }
 
-    PathGenerator(List<Pose2D> trajectory) {
+    public PathGenerator(List<Pose2D> trajectory) {
         assert(trajectory.size() >= 2);
         this.trajectory = new Trajectory<>(trajectory);
     }
 
-    PathGenerator(Pose2D first, Pose2D second, Pose2D ... rest) {
+    public PathGenerator(Pose2D first, Pose2D second, Pose2D ... rest) {
         trajectory = new Trajectory<>(Arrays.asList(rest));
         trajectory.add(0, first);
         trajectory.add(1, second);
@@ -43,15 +49,29 @@ public class PathGenerator implements CSVWritable {
         return trajectory.get(trajectory.size() - 1);
     }
 
+    public void setDistIncrement(double distIncrement) {
+        this.distIncrement = Math.max(minIncrement, distIncrement);
+    }
 
-    List<Pose2D> generatePoints(double distIncrement) {
+    public boolean generated() {
+        return (points.size() > 0);
+    }
+
+
+    public List<Pose2D> generatePoints() {
+        // Stop if already generated
+        if (generated()) {
+            return points;
+        }
+
         // Connect trajectory with splines
+        List<Spline> splines = new ArrayList<>();
         for (int i = 0; i < trajectory.size() - 1; i++) {
             splines.add(new CubicSpline(trajectory.get(i), trajectory.get(i + 1)));
         }
 
         // Join the parametrized splines into a single list
-        List<Pose2D> allIntervals = new ArrayList<>();
+        List<Pose2D> points = new ArrayList<>();
 
         // Parameterize splines
         for (Spline spline : splines) {
@@ -101,21 +121,21 @@ public class PathGenerator implements CSVWritable {
                     index = numSamples - 1;
 
                 // Interpolate based on distance
-                double stepDist = distances[index + 1] - distances[index];
                 intervals[i] = samples[index].interpolate(samples[index + 1],
-                        i - distances[index] / distIncrement);
+                        (i * distIncrement - distances[index]) / (distances[index + 1] - distances[index]));
             }
 
             // Join intervals into a single list
-            Collections.addAll(allIntervals, intervals);
+            Collections.addAll(points, intervals);
         }
 
-        return allIntervals;
+        return points;
     }
+
 
     @Override
     public String toCSV() {
-        List<Pose2D> points = generatePoints(defaultIncrement);
+        List<Pose2D> points = generatePoints();
         StringBuilder res = new StringBuilder();
         for (Pose2D p : points) {
             res.append(p.toCSV()).append("\n");

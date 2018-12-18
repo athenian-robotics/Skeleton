@@ -70,6 +70,6 @@ public class Pose2D implements IPose2D {
 
     @Override
     public String toCSV() {
-        return String.format("%s%s", translation.toCSV(), rotation.toCSV());
+        return String.format("%s,%s", translation.toCSV(), rotation.toCSV());
     }
 }
