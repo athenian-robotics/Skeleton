@@ -1,3 +1,7 @@
+**(if Joe)** {
+    Go to **[ConfusedJoe.md](https://github.com/athenian-robotics/Skeleton/blob/Trajectory-Planning/ConfusedJoe.md)** if you want to understand our code 
+}
+**(else)** {
 This should be a good starter code for this year and hopefully the year to come, it's not too broad, and it's specific enough to basically serve
 as a starter code for the actual robot.
 
