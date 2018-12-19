@@ -5,6 +5,9 @@ This is a brief guide to our project. This GitHub repository has all of the code
 We are managing our dependencies with [GradleRIO](https://github.com/wpilibsuite/GradleRIO). You can check out the build.gradle for more info. 
 
 #Robot
+If you're interested in what the actual robot code looks like, check out this section. We included it mainly because the code doesn't make sense without this.
+If not, move to the Path Finding section.
+
 ##Configuration
 > **RobotMap**: declares motors, encoders, and other I/O devices connected to the RoboRIO
 >
@@ -19,24 +22,27 @@ We are managing our dependencies with [GradleRIO](https://github.com/wpilibsuite
 >
 > **CommandGroups**: allow chaining groups of subsystems together, either sequentially or in parallel
 
+
 #Path Finding
+This is mainly what we worked on for the AP Computer Science Project. All files referenced are [here](https://github.com/athenian-robotics/Skeleton/tree/Trajectory-Planning/src/main/java/frc/team852/lib).
 ##Utilities
-**Geometric Objects**
-* Rotation2D
-* Translation2D
-* Pose2D
-* Pose2DWithCurvature
-* Trajectory
-* CSVEditor
+> **Geometric Objects**
+
+> Note: the interfaces are not included for brevity, but every geometric object has an interface 
+* Rotation2D: Data type for rotation/heading of robot
+* Translation2D: Data type for location of robot
+* Pose2D: Combines Rotation2D and Translation2D for a position object
+* Pose2DWithCurvature: Adds curvature to Pose2D; makes it easier to follow the path
+* Trajectory: A list of Pose2D
+* CSVEditor: A class for creating, saving CSV files; **calling this main method will run the code**
 ##Geometry
-* CubicSpline
+* CubicSpline: Draws a spline between two poses; has utility functions for splines
 * PathGenerator
-* Spline
+    > * Draw a spline between each waypoint
+    > * Sample the spline and connect each sampled points with linear segments
+    > * Use the linear segments as an approximation for finding equidistant points on the spline
 ##Generated_Path
-* path_draw.py
-
-
-
+* path_draw.py: reads the csv file (command-line argument) and draws the path using Python Turtle
 
 
 
