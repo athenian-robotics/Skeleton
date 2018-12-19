@@ -25,7 +25,7 @@ If not, move to the Path Finding section.
 
 # Path Finding
 This is mainly what we worked on for the AP Computer Science Project. All files referenced are [here](https://github.com/athenian-robotics/Skeleton/tree/Trajectory-Planning/src/main/java/frc/team852/lib).
-##Utilities
+## Utilities
 > **Geometric Objects**
 
 > Note: the interfaces are not included for brevity, but every geometric object has an interface 
