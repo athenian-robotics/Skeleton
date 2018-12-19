@@ -1,3 +1,7 @@
+/**
+ * Class to write any CSVWritable objects to CSV
+ * This is the main file; run the main() method to generate the path and save in CSV
+ */
 package frc.team852.lib.utilities;
 
 import frc.team852.lib.geometry.PathGenerator;
@@ -5,7 +9,6 @@ import frc.team852.lib.geometry.PathGenerator;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Path;
 
 public final class CSVEditor {
 
@@ -23,7 +26,6 @@ public final class CSVEditor {
         systemPath = (new File("./")).getAbsoluteFile() + workingPath;
         absPath = systemPath + filename;
     }
-
 
 
     public static void dumpCSV(CSVWritable writable) throws IOException {
@@ -48,11 +50,11 @@ public final class CSVEditor {
     }
 
     public String filename() {
-            return filename;
+        return filename;
     }
 
     public String absolutePath() {
-            return absPath;
+        return absPath;
     }
 
     public static void main(String[] args) throws IOException {
@@ -61,8 +63,8 @@ public final class CSVEditor {
 
         Trajectory<Pose2D> trajectory = new Trajectory<>();
         trajectory.add(new Pose2D(0, 0));
-        trajectory.add(new Pose2D(2, 1, Math.toRadians(45)));
-        trajectory.add(new Pose2D(0, 0, Math.toRadians(0)));
+        trajectory.add(new Pose2D(2, 2, Math.toRadians(45)));
+        trajectory.add(new Pose2D(-4, 3, Math.toRadians(0)));
 
         PathGenerator path = new PathGenerator(trajectory);
         path.setDistIncrement(0.05);

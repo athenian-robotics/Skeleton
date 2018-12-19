@@ -1,3 +1,6 @@
+/**
+ * Abstract class extended by CubicSpline
+ */
 package frc.team852.lib.geometry;
 
 import frc.team852.lib.utilities.Pose2D;

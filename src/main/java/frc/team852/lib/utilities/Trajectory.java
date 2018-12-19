@@ -1,6 +1,12 @@
+/**
+ * Data type that contains a list of IPose2D objects and methods to interact with them
+ */
 package frc.team852.lib.utilities;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class Trajectory<P extends IPose2D> implements Iterable<P>, CSVWritable {
@@ -57,7 +63,6 @@ public class Trajectory<P extends IPose2D> implements Iterable<P>, CSVWritable {
     public void forEach(Consumer<? super P> action) {
         trajectory.forEach(action);
     }
-
 
 
     @Override

@@ -1,3 +1,6 @@
+/**
+ * Data type to keep track of location in an xy-plane, implements ITranslation2D
+ */
 package frc.team852.lib.utilities;
 
 public class Translation2D implements ITranslation2D {
@@ -30,6 +33,7 @@ public class Translation2D implements ITranslation2D {
         return y;
     }
 
+    //Calculate distance between two Translation2D objects
     public double distanceTo(ITranslation2D other) {
         return Math.hypot(x - other.getTranslation().x, y - other.getTranslation().y);
     }

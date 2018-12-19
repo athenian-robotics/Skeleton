@@ -1,11 +1,16 @@
+/**
+ * Generates splines between each waypoint (using CubicSpline class) and generates equidistant points on the spline
+ */
 package frc.team852.lib.geometry;
 
 import frc.team852.lib.utilities.CSVWritable;
 import frc.team852.lib.utilities.Pose2D;
 import frc.team852.lib.utilities.Trajectory;
 
-import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class PathGenerator implements CSVWritable {
     private static final int maxSamples = 200;

@@ -1,3 +1,8 @@
+/**
+ * Data type that implements IPose2D and ICurvature
+ * Contains a Pose2D (Translation2D and Rotation2D) along with curvature and change in curvature (dcurvature_ds)
+ */
+
 package frc.team852.lib.utilities;
 
 public class Pose2DWithCurvature implements IPose2D, ICurvature {

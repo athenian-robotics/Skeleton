@@ -28,11 +28,12 @@ def draw(fname=None):
         t.setheading(math.degrees(math.atan2(p[3], p[2])))
         t.goto(p[0] * 40, p[1] * 40)
 
-        # Wait a bit between frames
-        time.sleep(delay)
+        # Wait a bitdelay between frames
+        time.sleep()
 
     # Pause so user can see the completed result
-    time.sleep(3)
+    win=turtle.getscreen()
+    win.exitonclick()
 
 if __name__ == '__main__':
     # Use .csv file passed in as command-line argument, if present

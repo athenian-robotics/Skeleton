@@ -1,6 +1,11 @@
+/**
+ * Data type used for specifying heading/rotation of robot and methods to manipulate it, implements IRotation2D
+ */
 package frc.team852.lib.utilities;
 
 public class Rotation2D implements IRotation2D {
+
+    //the angle is stored as a cos and sin rather than the angle measure itself
     private final double cos;
     private final double sin;
 
@@ -37,6 +42,7 @@ public class Rotation2D implements IRotation2D {
         return Math.atan2(sin, cos);
     }
 
+    //Calculates distance between two angles
     public double angleTo(IRotation2D other) {
         Rotation2D o = other.getRotation().inverse();
         return inverse().rotate(o).getAngle();
@@ -46,6 +52,7 @@ public class Rotation2D implements IRotation2D {
         return new Rotation2D(cos, -sin);
     }
 
+    //Adds two Rotation2D objects together
     public Rotation2D rotate(IRotation2D other) {
         Rotation2D o = other.getRotation().inverse();
         return new Rotation2D(cos * o.cos - sin * o.sin, cos * o.sin + sin * o.cos);

@@ -1,3 +1,7 @@
+/**
+ * Data type that implements IPose2D
+ * Describes "pose" with Translation2D and Rotation2D objects
+ */
 package frc.team852.lib.utilities;
 
 public class Pose2D implements IPose2D {
@@ -45,6 +49,7 @@ public class Pose2D implements IPose2D {
         rotation = new Rotation2D(other.getRotation());
     }
 
+    //Calculate distance between two Pose2D objects
     public double distanceTo(ITranslation2D other) {
         return getTranslation().distanceTo(other);
     }
