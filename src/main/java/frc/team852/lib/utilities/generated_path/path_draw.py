@@ -29,7 +29,7 @@ def draw(fname=None):
         t.goto(p[0] * 40, p[1] * 40)
 
         # Wait a bitdelay between frames
-        time.sleep()
+        time.sleep(100)
 
     # Pause so user can see the completed result
     win=turtle.getscreen()
