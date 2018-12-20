@@ -63,8 +63,8 @@ public final class CSVEditor {
 
         Trajectory<Pose2D> trajectory = new Trajectory<>();
         trajectory.add(new Pose2D(0, 0));
-        trajectory.add(new Pose2D(2, 2, Math.toRadians(45)));
-        trajectory.add(new Pose2D(-4, 3, Math.toRadians(0)));
+        trajectory.add(new Pose2D(2,0));
+        trajectory.add(new Pose2D(4, 3));
 
         PathGenerator path = new PathGenerator(trajectory);
         path.setDistIncrement(0.05);
