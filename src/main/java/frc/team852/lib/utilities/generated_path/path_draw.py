@@ -13,12 +13,8 @@ def draw(fname=None):
         with open(fname) as f:
             l = list(csv.reader(f))
 
-        # Check if python2 or python3
-        if sys.version_info >= (3, 0):
-            l = [[float(f) for f in el] for el in l]
-        else:
-            # Cast values from strings to floats
-            l = [map(float, p) for p in l]
+        # Cast values from strings to floats
+        l = [[float(f) for f in p] for p in l]
 
         # Calculate delay between frames so that the animation lasts 5 seconds
         delay = 5.0 / len(l)
