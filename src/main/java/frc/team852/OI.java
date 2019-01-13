@@ -3,6 +3,7 @@ package frc.team852;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.team852.commands.DriveDistance;
+import frc.team852.commands.MoveArm;
 
 
 /**
@@ -51,5 +52,6 @@ public class OI {
 
     public OI() {
         new JoystickButton(stick1, 1).whenReleased(new DriveDistance(200));
+        new JoystickButton(stick1, 6).whenReleased(new MoveArm(0.4));
     }
 }

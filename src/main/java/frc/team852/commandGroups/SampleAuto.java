@@ -7,6 +7,7 @@ import frc.team852.commands.TimedDrive;
 public class SampleAuto extends CommandGroup {
     public SampleAuto(double power) {
 
+        this.addSequential(new TimedDrive(power, power, 3));
         // this.addSequential(new TimedDrive(power,power,0.3)); // Move forward 4s
         // this.setTimeout(0.5);
         // this.addSequential(new TimedDrive(power,power,0.3)); //turn left 3s

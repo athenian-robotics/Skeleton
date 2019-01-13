@@ -6,8 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team852.subsystems.Climber;
 import frc.team852.subsystems.DrivetrainSubsystem;
 import frc.team852.subsystems.SampleSubsystem;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,6 +29,7 @@ public class Robot extends TimedRobot {
     // subsystems
     public static SampleSubsystem example;
     public static DrivetrainSubsystem drivetrain;
+    public static Climber climber;
 
     // commands
     private Command autonomousCommand;
@@ -44,6 +47,7 @@ public class Robot extends TimedRobot {
         // initialization, this is how you initialize a subsystem
         drivetrain = new DrivetrainSubsystem();
         example = new SampleSubsystem();
+        climber = new Climber();
 
         oi = new OI(); // must be defined last
         new RobotMap(); // empty declaration to create it
@@ -58,6 +62,7 @@ public class Robot extends TimedRobot {
         for (String key : SmartDashboard.getKeys()) {
             SmartDashboard.delete(key);
         }
+
         SmartDashboard.putNumberArray("LEFT_PID", leftGainz);
         SmartDashboard.putNumberArray("RIGHT_PID", rightGainz);
         SmartDashboard.updateValues();
@@ -161,3 +166,4 @@ public class Robot extends TimedRobot {
         SmartDashboard.updateValues();
     }
 }
+

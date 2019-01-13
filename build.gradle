@@ -6,6 +6,7 @@ plugins {
 }
 
 
+
 allprojects {
     repositories {
         maven { url "https://jitpack.io" }
@@ -38,12 +39,12 @@ deploy {
     }
 }
 
-// Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.
+// Defining my dependencies. In this case, WPILib (+ friends), and vendor libraries.1
 // Also defines JUnit 4.
 dependencies {
     compile wpilib()
     compile ctre()
-    //compile pathfinder()
+    compile pathfinder()
     compile 'com.googlecode.json-simple:json-simple:1.1.1'
     compile 'com.google.code.gson:gson:2.8.5'
 
