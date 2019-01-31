@@ -1,12 +1,11 @@
-**if Joe:** Go to **[ConfusedJoe.md](https://github.com/athenian-robotics/Skeleton/blob/Trajectory-Planning/ConfusedJoe.md)** if you want to understand our code
+Go to **[MotionPlanning.md](https://github.com/athenian-robotics/Skeleton/blob/Trajectory-Planning/MotionPlanning.md)** for an explanation of the Motion Planning portion of this project.
+
+
+
+This project is meant to serve as a starter code for FRC, for this robotics season and future years.
     
-**else:** 
-\
-This should be a good starter code for this year and hopefully the year to come, it's not too broad, and it's specific enough to basically serve
-as a starter code for the actual robot.
     
-    
-It has a ~~hopefully~~ working tank drive and cheesy drive, PID controls, and some other basic structures.
+It has a tank drive and cheesy drive, PID controls, a [motion-planning](https://github.com/athenian-robotics/Skeleton/blob/Trajectory-Planning/MotionPlanning.md) module, and some other basic structures.
 
 # Dependencies
 
