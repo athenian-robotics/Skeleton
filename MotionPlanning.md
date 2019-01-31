@@ -1,5 +1,5 @@
 # Welcome
-This is a brief guide to our project. This GitHub repository has all of the code necessary to run the robot manually, run it autonomously either based on time or distance, and generate a spline and display it with Python's Turtle module.
+This is a brief guide to our project's motion-planning module. This GitHub repository has all of the code necessary to run the robot manually, run it autonomously either based on time or distance, and generate a spline and display it with Python's Turtle module.
 
 # Dependencies
 We are managing our dependencies with [GradleRIO](https://github.com/wpilibsuite/GradleRIO). You can check out the build.gradle for more info. 
